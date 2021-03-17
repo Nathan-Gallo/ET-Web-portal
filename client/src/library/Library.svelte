@@ -8,7 +8,7 @@
   let books = [];
   onMount(async function() {
     const { data } = await httpGet("/?_sort=id&_order=desc");
-    books = data;
+    books = data.books;
   });
 </script>
 

@@ -1,5 +1,8 @@
 export const bookApiUrl = 'http://localhost:3000/books'
 
+export const testBookApiUrl = 'http://localhost:8081/api/books'
+
+
 export function httpGet(path) {
   return req(path)
 }
@@ -13,7 +16,7 @@ export function httpPut(path, data) {
 }
 
 async function req(path, method = 'GET', data) {
-  const res = await fetch(bookApiUrl + path, {
+  const res = await fetch(testBookApiUrl + path, {
     method,
     headers: {
       'Content-Type': 'application/json'
@@ -21,5 +24,6 @@ async function req(path, method = 'GET', data) {
     body: data && JSON.stringify(data)
   })
   const json = await res.json()
-  return { ok: res.ok, data: json }
+  return { ok: res.ok, data: json.data }
 }
+

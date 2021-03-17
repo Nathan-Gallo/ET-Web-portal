@@ -5,6 +5,7 @@ let cors = require('cors');
 const fileUpload = require('express-fileupload');
 let bodyParser = require('body-parser');
 let recipeRepo = require('./repos/reciperepo');
+let projectRepo = require('./repos/projectrepo');
 let userRepo = require('./repos/user-repo');
 let errorHelper = require('./helpers/errorhelpers');
 
@@ -31,6 +32,19 @@ router.get('/', function (req, res, next) {
             "status": 200,
             "statusText": "OK",
             "message": "All recipes retrieved",
+            "data": data
+        });
+    }, function (err) {
+        next(err);
+    });
+});
+
+router.get('/books', function (req, res, next) {
+    projectRepo.get(function (data) {
+        res.status(200).json({
+            "status": 200,
+            "statusText": "OK",
+            "message": "All projects retrieved",
             "data": data
         });
     }, function (err) {
