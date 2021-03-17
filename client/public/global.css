@@ -96,8 +96,8 @@ button:focus {
 
 html,
 body {
-  background: var(--colorBg);
-  color: var(--colorFg);
+  background: #fbfbfd;
+  color: #1f1f1f;
   font-family: var(--typeFaceDefault);
   font-size: var(--typeSizeDefault);
   margin: 0;
