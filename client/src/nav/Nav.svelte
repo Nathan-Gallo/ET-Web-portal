@@ -46,7 +46,7 @@
   </nav>
 
   <style>nav {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #fbfbfd;
     font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     height: 45px;
   }
@@ -76,7 +76,7 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: #fff;
+    background-color: #727374;
     transition: all 0.4s;
     transform-origin: center;
   }
@@ -130,7 +130,7 @@
   }
   
   .navbar-list.mobile {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #fbfbfd;
     position: fixed;
     display: block;
     height: calc(100% - 45px);
@@ -154,7 +154,7 @@
   }
   
   .navbar-list a {
-    color: #fff;
+    color: #727374;
     text-decoration: none;
     display: flex;
     height: 45px;
