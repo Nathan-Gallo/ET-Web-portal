@@ -3,7 +3,8 @@
 
   import Create from "./create/Create.svelte";
   import Detail from "./detail/Detail.svelte";
-  import Library from "./library/Library.svelte";
+  import Home from "./home/Home.svelte";
+  import Projects from "./projects/Projects.svelte";
   import Nav from './nav/nav.svelte';
 
   export let url = "";
@@ -25,7 +26,10 @@
       <Detail id={params.id} />
     </Route>
     <Route path="/">
-      <Library />
+      <Home />
+    </Route>
+    <Route path="/projects">
+      <Projects />
     </Route>
   </main>
 </Router>

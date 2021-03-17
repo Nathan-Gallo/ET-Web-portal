@@ -1,15 +1,5 @@
 <script>
-  import { onMount } from "svelte";
-
-  import BookGrid from "./BookGrid.svelte";
   import Button from "../common/Button.svelte";
-  import { httpGet } from "../common/api.js";
-
-  let books = [];
-  onMount(async function () {
-    const { data } = await httpGet("/?_sort=id&_order=desc");
-    books = data.books;
-  });
 </script>
 
 <header>
@@ -30,9 +20,21 @@
   mollis malesuada
 </p>
 
-<Button to="/create">View our Projects</Button>
+<Button to="/projects">View our Projects</Button>
+<br /><br />
 <hr />
-<BookGrid {books} />
+<br /><br />
+<div>
+  <span>Goals</span>
+  <ul>
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+    <li>Donec ut metus et nibh vestibulum placerat.</li>
+    <li>
+      Aenean sollicitudin augue id nibh fermentum, ac consectetur elit pharetra.
+    </li>
+    <li>In iaculis elit ac risus interdum iaculis.</li>
+  </ul>
+</div>
 
 <style>
   header {
@@ -50,5 +52,24 @@
 
   .greeting {
     font-size: var(--typeSizeSmall);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    grid-auto-rows: 12.8rem;
+    gap: var(--spacingMedium);
+    list-style: none;
+    max-width: 100%;
+    padding: 0;
+  }
+  li {
+    position: relative;
+    display: flex;
+    background-color: white;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 5px 5px 10px 0px #ccc;
   }
 </style>

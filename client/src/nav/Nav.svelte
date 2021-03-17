@@ -7,7 +7,7 @@
     // List of navigation items
     const navItems = [
       { label: "Emerging Technology", href: "/", style: "align-left" },
-      { label: "Projects", href: "#", style: "" },
+      { label: "Projects", href: "/projects", style: "" },
       { label: "Submit a Use Case", href: "/create", style: "" }
     ];
   
