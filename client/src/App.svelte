@@ -16,7 +16,7 @@
 </style>
 
 <Router {url}>
-  <Nav></Nav>>
+  <Nav></Nav>
   <main>
     <Route path="/create">
       <Create />

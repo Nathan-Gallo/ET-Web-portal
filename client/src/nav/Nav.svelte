@@ -6,9 +6,9 @@
   
     // List of navigation items
     const navItems = [
-      { label: "logo", href: "/" },
-      { label: "About Us", href: "#" },
-      { label: "Create", href: "/create" }
+      { label: "Emerging Technology", href: "/", style: "align-left" },
+      { label: "Projects", href: "#", style: "" },
+      { label: "Submit a Use Case", href: "/create", style: "" }
     ];
   
     // Mobile menu click event handler
@@ -38,7 +38,7 @@
       <ul class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
         {#each navItems as item}
           <li>
-            <a href={item.href}>{item.label}</a>
+            <a href={item.href} class={item.style}>{item.label}</a>
           </li>
         {/each}
       </ul>

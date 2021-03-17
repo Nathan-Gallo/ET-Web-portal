@@ -6,11 +6,33 @@
   import { httpGet } from "../common/api.js";
 
   let books = [];
-  onMount(async function() {
+  onMount(async function () {
     const { data } = await httpGet("/?_sort=id&_order=desc");
     books = data.books;
   });
 </script>
+
+<header>
+  <span class="preamble">Welcome to the</span>
+  <h1>Emerging Technology Portal</h1>
+</header>
+
+<p class="greeting">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae euismod
+  velit. Curabitur posuere velit velit, eget fermentum purus scelerisque sit
+  amet. Nunc venenatis leo ligula, eu fermentum turpis dignissim at. Quisque
+  malesuada dictum nisi, sed venenatis enim hendrerit laoreet. Integer metus
+  tortor, pretium auctor auctor in, feugiat nec dolor. Pellentesque pretium
+  libero at magna luctus vulputate. Cras vehicula in tortor eget cursus. Aliquam
+  a suscipit quam, a molestie nulla. Phasellus purus turpis, placerat sed
+  blandit sit amet, fermentum et eros. Ut gravida, erat eget lacinia feugiat,
+  arcu mi maximus dui, nec finibus est orci a neque. Cras volutpat velit a quam
+  mollis malesuada
+</p>
+
+<Button to="/create">View our Projects</Button>
+<hr />
+<BookGrid {books} />
 
 <style>
   header {
@@ -21,7 +43,7 @@
     display: block;
   }
   h1 {
-    font-size: var(--typeSizeXXLarge);
+    font-size: var(--typeSizeXLarge);
     font-weight: var(--typeWeightBold);
     line-height: var(--typeLineHeightTight);
   }
@@ -30,17 +52,3 @@
     font-size: var(--typeSizeSmall);
   }
 </style>
-
-<header>
-  <span class="preamble">Welcome to the</span>
-  <h1>Library</h1>
-</header>
-
-<p class="greeting">
-  This is a library for the people. Welcome. Read the books here. Be inspired.
-  Go home, and share them with your family.
-</p>
-
-<Button to="/create">+ Add Book</Button>
-
-<BookGrid {books} />
