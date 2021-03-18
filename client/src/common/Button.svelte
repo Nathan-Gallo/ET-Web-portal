@@ -33,6 +33,7 @@
     text-transform: uppercase;
     transition: filter 150ms;
     white-space: nowrap;
+    float: right;
   }
   .button:hover,
   .button:focus {

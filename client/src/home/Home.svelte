@@ -24,8 +24,8 @@
 <br /><br />
 <hr />
 <br /><br />
-<div>
-  <span>Goals</span>
+<span>Goals</span>
+<div class="centered">
   <ul>
     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
     <li>Donec ut metus et nibh vestibulum placerat.</li>
@@ -54,6 +54,11 @@
     font-size: var(--typeSizeSmall);
   }
 
+  .centered {
+    width:900px;
+    margin:0 auto;
+  }
+
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
@@ -63,6 +68,7 @@
     list-style: none;
     max-width: 100%;
     padding: 0;
+   
   }
   li {
     position: relative;
