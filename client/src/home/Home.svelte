@@ -24,7 +24,21 @@
 <br /><br />
 <hr />
 <br /><br />
-<span>Goals</span>
+<span class="preamble">Goals</span>
+<div class="centered">
+  <ul>
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+    <li>Donec ut metus et nibh vestibulum placerat.</li>
+    <li>
+      Aenean sollicitudin augue id nibh fermentum, ac consectetur elit pharetra.
+    </li>
+    <li>In iaculis elit ac risus interdum iaculis.</li>
+  </ul>
+</div>
+<br>
+<hr>
+<br>
+<span class="preamble">Use Cases</span>
 <div class="centered">
   <ul>
     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -55,8 +69,8 @@
   }
 
   .centered {
-    width:1500px;
-    margin:0 auto;
+    width: 1500px;
+    margin: 0 auto;
   }
 
   ul {
@@ -68,7 +82,6 @@
     list-style: none;
     max-width: 100%;
     padding: 0;
-   
   }
   li {
     position: relative;

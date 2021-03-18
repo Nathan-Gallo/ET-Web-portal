@@ -40,12 +40,12 @@ textarea {
   padding: 0.4em;
   margin: 0 0 0.5em 0;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 2px;
 }
 
 input:disabled {
-  color: #ccc;
+  color: rgb(255, 255, 255);
 }
 
 input[type='range'] {

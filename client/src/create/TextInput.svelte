@@ -15,7 +15,7 @@
   input,
   textarea {
     display: block;
-    background: #f8ecde;
+    background: #fff;
     border-radius: 25px;
     border: 2px solid var(--colorFg);
     padding: 0.75rem var(--spacingSmall) 0.75rem var(--spacingLarge);

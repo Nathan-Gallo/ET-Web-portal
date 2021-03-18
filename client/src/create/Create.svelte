@@ -60,23 +60,24 @@
 
 <BackButtonRow />
 
-<Header element="h1" size="large">Create</Header>
+<Header element="h1" size="large">Submit an Idea</Header>
 
 <form on:submit|preventDefault={handleSubmit}>
   <div class="fields">
-    <TextInput label="Title" bind:value={title} />
-    <TextInput label="Author" bind:value={author} />
-    <TextInput label="Cover URL" bind:value={cover} />
-    <TextInput label="About" bind:value={about} multiline />
+    <TextInput label="Your Name" bind:value={title} />
+    <TextInput label="Your Email" bind:value={author} />
+    <TextInput label="Your Team/Group" bind:value={cover} />
+    <TextInput label="Business Need / Usecase" bind:value={about} multiline />
     <div>
-      <Button>Save</Button>
+      <Button>Submit</Button>
     </div>
   </div>
 
+  <!--
   <div>
     <Header>Preview</Header>
     <div class="preview">
       <BookCover {book} />
     </div>
-  </div>
+  </div>-->
 </form>

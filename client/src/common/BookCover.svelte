@@ -1,13 +1,60 @@
 <script>
   import { links } from "svelte-routing";
 
-  export let book = {};
+  export let project = {};
   export let interactive = false;
 
   function isValidUrl(url) {
     return url && /http.+\.(jpg|png|gif)$/.test(url);
   }
 </script>
+
+{#if interactive}
+  <a
+    href={"/books/" + project.id}
+    use:links
+    class="book book--interactive book--variation-{project.variation}
+    {isValidUrl(
+      project.cover
+    )
+      ? 'book--cover'
+      : 'book--no-cover'}"
+  >
+    <span
+      class="cover"
+      style={isValidUrl(project.cover)
+        ? "background-image: url(" + project.cover + ")"
+        : ""}
+    >
+      <span class="title">{isValidUrl(project.cover) ? "" : project.title || ""}</span
+      >
+      <span class="author"
+        >{isValidUrl(project.cover) ? "" : project.author || ""}</span
+      >
+    </span>
+  </a>
+{:else}
+  <div
+    class="book book--variation-{project.variation}
+    {isValidUrl(project.cover)
+      ? 'book--cover'
+      : 'book--no-cover'}"
+  >
+    <div
+      class="cover"
+      style={isValidUrl(project.cover)
+        ? "background-image: url(" + project.cover + ")"
+        : ""}
+    >
+      <header>
+        <h2 class="title">{isValidUrl(project.cover) ? "" : project.title || ""}</h2>
+      </header>
+      <div class="author">
+        {isValidUrl(project.cover) ? "" : project.author || ""}
+      </div>
+    </div>
+  </div>
+{/if}
 
 <style>
   .book {
@@ -96,31 +143,3 @@
     margin-left: calc(10% + var(--spacingSmall));
   }
 </style>
-
-{#if interactive}
-  <a
-    href={'/books/' + book.id}
-    use:links
-    class="book book--interactive book--variation-{book.variation}
-    {isValidUrl(book.cover) ? 'book--cover' : 'book--no-cover'}">
-    <span
-      class="cover"
-      style={isValidUrl(book.cover) ? 'background-image: url(' + book.cover + ')' : ''}>
-      <span class="title">{isValidUrl(book.cover) ? "" : book.title || ""}</span>
-      <span class="author">{isValidUrl(book.cover) ? "" : book.author || ""}</span>
-    </span>
-  </a>
-{:else}
-  <div
-    class="book book--variation-{book.variation}
-    {isValidUrl(book.cover) ? 'book--cover' : 'book--no-cover'}">
-    <div
-      class="cover"
-      style={isValidUrl(book.cover) ? 'background-image: url(' + book.cover + ')' : ''}>
-      <header>
-        <h2 class="title">{isValidUrl(book.cover) ? "" : book.title || ""}</h2>
-      </header>
-      <div class="author">{isValidUrl(book.cover) ? "" : book.author || ""}</div>
-    </div>
-  </div>
-{/if}

@@ -9,20 +9,8 @@
     text-transform: uppercase;
     margin-bottom: var(--spacingXLarge);
   }
-  .text {
-    margin-left: var(--spacingSmall);
-  }
-  span {
-    font-weight: var(--typeWeightBold);
-  }
 </style>
 
 <nav>
   <Button to="/">&lt; Back</Button>
-
-  <div class="text">
-    To the
-    <span>Library</span>
-
-  </div>
 </nav>

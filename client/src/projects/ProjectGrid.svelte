@@ -1,7 +1,7 @@
 <script>
   import BookCover from "../common/BookCover.svelte";
 
-  export let books = [];
+  export let projects = [];
 </script>
 
 <style>
@@ -23,9 +23,9 @@
 </style>
 
 <ul>
-  {#each books as book}
+  {#each projects as project}
     <li>
-      <BookCover interactive {book} />
+      <BookCover interactive {project} />
     </li>
   {/each}
 </ul>
