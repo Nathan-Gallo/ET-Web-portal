@@ -100,7 +100,8 @@ body {
   color: #1f1f1f;
   font-family: var(--typeFaceDefault);
   font-size: var(--typeSizeDefault);
-  margin: 0;
+  margin: auto;
+  max-width: 1500px;
   padding: 0;
 }
 
