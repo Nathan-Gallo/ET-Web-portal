@@ -55,14 +55,14 @@
   }
 
   .centered {
-    width:900px;
+    width:1500px;
     margin:0 auto;
   }
 
   ul {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
     grid-auto-rows: 12.8rem;
     gap: var(--spacingMedium);
     list-style: none;
