@@ -1,7 +1,7 @@
 <script>
   import Button from "../common/Button.svelte";
 </script>
-
+<main>
 <header>
   <span class="preamble">Welcome to the</span>
   <h1>Emerging Technology Portal</h1>
@@ -35,9 +35,9 @@
     <li>In iaculis elit ac risus interdum iaculis.</li>
   </ul>
 </div>
-<br>
-<hr>
-<br>
+<br />
+<hr />
+<br />
 <span class="preamble">Use Cases</span>
 <div class="centered">
   <ul>
@@ -49,8 +49,13 @@
     <li>In iaculis elit ac risus interdum iaculis.</li>
   </ul>
 </div>
+</main>
 
 <style>
+  main {
+    max-width: 1500px;
+    margin: auto;
+  }
   header {
     margin: var(--spacingMedium) 0 var(--spacingLarge) 0;
     text-transform: uppercase;
@@ -86,7 +91,13 @@
   li {
     position: relative;
     display: flex;
-    background-color: white;
+    background: rgb(235, 247, 245);
+    background: linear-gradient(
+      180deg,
+      rgba(235, 247, 245, 1) 0%,
+      rgba(250, 251, 253, 1) 100%
+    );
+    border-radius: 15px;
     text-align: center;
     padding: 1rem;
     box-shadow: 5px 5px 10px 0px #ccc;
