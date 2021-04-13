@@ -4,6 +4,56 @@
   export let projects = [];
 </script>
 
+<h2>Active POC's</h2>
+<ul>
+  {#each projects as project}
+    {#if project["Emerging Tech POC Pipeline"] == "Active POC"}
+      <li>
+        <BookCover interactive {project} /> 
+        <!--{project.Name} -->
+      </li>
+    {/if}
+  {/each}
+</ul>
+
+<h2>Post POC's</h2>
+<ul>
+  {#each projects as project}
+    {#if project["Emerging Tech POC Pipeline"] == "Post POC"}
+      <li>
+        <!--<BookCover interactive {project} /> -->
+        {project.Name}
+      </li>
+    {/if}
+  {/each}
+</ul>
+
+<h2>Upcoming POC's</h2>
+<ul>
+  {#each projects as project}
+    {#if project["Emerging Tech POC Pipeline"] == "Prepping for POC" || "Use Cases"}
+      <li>
+        <!--<BookCover interactive {project} /> -->
+        {project.Name}
+      </li>
+    {/if}
+  {/each}
+</ul>
+
+<h2>Our Vendors</h2>
+<ul>
+  {#each projects as project}
+    {#if project["Emerging Tech POC Pipeline"] == "Vendors"}
+      <li>
+        <!--<BookCover interactive {project} /> -->
+        {project.Name}
+      </li>
+    {/if}
+  {/each}
+</ul>
+
+
+
 <style>
   ul {
     display: grid;
@@ -19,13 +69,4 @@
     position: relative;
     display: flex;
   }
- 
 </style>
-
-<ul>
-  {#each projects as project}
-    <li>
-      <BookCover interactive {project} />
-    </li>
-  {/each}
-</ul>

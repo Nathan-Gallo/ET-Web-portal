@@ -7,7 +7,7 @@
     let projects = [];
     onMount(async function () {
         const { data } = await httpGet("/?_sort=id&_order=desc");
-        projects = data.books;
+        projects = data.projects;
     });
 </script>
 

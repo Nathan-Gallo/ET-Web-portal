@@ -10,33 +10,15 @@
 </script>
 
 {#if interactive}
-  <a
-    href={"/books/" + project.id}
-    use:links
-    class="book book--interactive book--variation-{project.variation}
-    {isValidUrl(
-      project.cover
-    )
-      ? 'book--cover'
-      : 'book--no-cover'}"
-  >
-    <span
-      class="cover"
-      style={isValidUrl(project.cover)
-        ? "background-image: url(" + project.cover + ")"
-        : ""}
-    >
-      <span class="title">{isValidUrl(project.cover) ? "" : project.title || ""}</span
-      >
-      <span class="author"
-        >{isValidUrl(project.cover) ? "" : project.author || ""}</span
-      >
-    </span>
+  <a href={"/books/" + project["User Story"]} use:links>
+    <span class="title">{project.Name}</span>
   </a>
 {:else}
   <div
     class="book book--variation-{project.variation}
-    {isValidUrl(project.cover)
+    {isValidUrl(
+      project.cover
+    )
       ? 'book--cover'
       : 'book--no-cover'}"
   >
@@ -47,7 +29,9 @@
         : ""}
     >
       <header>
-        <h2 class="title">{isValidUrl(project.cover) ? "" : project.title || ""}</h2>
+        <h2 class="title">
+          {isValidUrl(project.cover) ? "" : project.title || ""}
+        </h2>
       </header>
       <div class="author">
         {isValidUrl(project.cover) ? "" : project.author || ""}

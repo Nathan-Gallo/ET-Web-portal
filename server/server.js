@@ -52,6 +52,32 @@ router.get('/books', function (req, res, next) {
     });
 });
 
+router.get('/books/:userStory', function (req, res, next) {
+    projectRepo.getByUserStory(req.params.userStory, function (data) {
+        if (data.length != 0) {
+            res.status(200).json({
+                "status": 200,
+                "statusText": "OK",
+                "message": "The user story: '" + req.params.userStory + "' retrieved",
+                "data": data
+            });
+        }
+        else {
+            res.status(404).json({
+                "status": 404,
+                "statusText": "Not Found",
+                "message": "The user story '" + req.params.userStory + "' could not be found.",
+                "error": {
+                    "code": "NOT_FOUND",
+                    "message": "The user story '" + req.params.userStory + "' could not be found."
+                }
+            });
+        }
+    }, function (err) {
+        next(err);
+    });
+});
+
 // Create GET/category to return all recipes in that category
 router.get('/category/:category', function (req, res, next) {
     recipeRepo.getByCategory(req.params.category, function (data) {

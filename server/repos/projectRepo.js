@@ -12,25 +12,27 @@ let projectRepo = {
             }
         });
     },
-    getById: function (id, resolve, reject) {
+    getByUserStory: function (userStory, resolve, reject) {
         fs.readFile(FILE_NAME, function (err, data) {
             if (err) {
                 reject(err);
             }
             else {
-                let recipe = JSON.parse(data).find(r => r.id == id);
-                resolve(recipe);
+                let projects = JSON.parse(data)
+                projects = projects.projects
+                let project = projects.find(r => r["User Story"] == userStory);
+                resolve(project);
             }
         });
     },
-    getByCategory: function (category, resolve, reject) {
+    getByName: function (name, resolve, reject) {
         fs.readFile(FILE_NAME, function (err, data) {
             if (err) {
                 reject(err);
             }
             else {
-                let recipes = JSON.parse(data).filter(r => r.category.toLowerCase() == category.toLowerCase());
-                resolve(recipes);
+                let project = JSON.parse(data).filter(r => r.name.toLowerCase() == name.toLowerCase());
+                resolve(project);
             }
         });
     },

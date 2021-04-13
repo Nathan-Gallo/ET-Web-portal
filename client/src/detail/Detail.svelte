@@ -5,15 +5,16 @@
   import BookCover from "../common/BookCover.svelte";
   import Button from "../common/Button.svelte";
   import Header from "../common/Header.svelte";
-  import { httpGet3000, httpPut } from "../common/api.js";
+  import { httpGet, httpPut } from "../common/api.js";
 
   export let id;
 
-  let book = {};
+  let project = {};
 
   onMount(async _ => {
-    const { data } = await httpGet3000("/" + id);
-    book = data.books;
+    const { data } = await httpGet("/" + id);
+    project = data;
+    console.log(project)
   });
 
 </script>
@@ -40,14 +41,14 @@
 
 <BackButtonRow />
 
-<Header element="h1" size="large">{book.title}</Header>
+<Header element="h1" size="large">{project.Name}</Header>
 
 <div class="detail">
   <div class="cover">
-    <BookCover {book} />
+    <BookCover {project} />
   </div>
   <div>
     <Header>About</Header>
-    <p>{book.about}</p>
+    <p>{project.Name}</p>
   </div>
 </div>
