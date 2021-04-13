@@ -39,7 +39,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/books', function (req, res, next) {
+router.get('/projects', function (req, res, next) {
     projectRepo.get(function (data) {
         res.status(200).json({
             "status": 200,
@@ -52,7 +52,7 @@ router.get('/books', function (req, res, next) {
     });
 });
 
-router.get('/books/:userStory', function (req, res, next) {
+router.get('/projects/:userStory', function (req, res, next) {
     projectRepo.getByUserStory(req.params.userStory, function (data) {
         if (data.length != 0) {
             res.status(200).json({

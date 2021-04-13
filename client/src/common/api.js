@@ -1,6 +1,6 @@
-export const bookApiUrl = 'http://localhost:3000/books'
+export const bookApiUrl = 'http://localhost:3000/projects'
 
-export const testBookApiUrl = 'http://localhost:8081/api/books'
+export const testBookApiUrl = 'http://localhost:8081/api/projects'
 
 
 export function httpGet(path) {
