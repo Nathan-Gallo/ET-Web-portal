@@ -2,7 +2,7 @@
   import { navigate } from "svelte-routing";
 
   import BackButtonRow from "../common/BackButtonRow.svelte";
-  import BookCover from "../common/BookCover.svelte";
+  import ProjectCover from "../common/ProjectCover.svelte";
   import Button from "../common/Button.svelte";
   import Header from "../common/Header.svelte";
   import { httpPost } from "../common/api.js";
@@ -35,6 +35,12 @@
 </script>
 
 <style>
+
+main {
+    max-width: 1500px;
+    margin: auto;
+  }
+
   form {
     display: grid;
     grid-auto-rows: auto;
@@ -57,8 +63,9 @@
     }
   }
 </style>
-
+<main>
 <BackButtonRow />
+
 
 <Header element="h1" size="large">Submit an Idea</Header>
 
@@ -77,7 +84,9 @@
   <div>
     <Header>Preview</Header>
     <div class="preview">
-      <BookCover {book} />
+      <ProjectCover {book} />
     </div>
   </div>-->
 </form>
+
+</main>

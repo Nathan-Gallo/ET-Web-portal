@@ -1,5 +1,5 @@
 let fs = require('fs');
-const FILE_NAME = './assets/db.json';
+const FILE_NAME = './assets/rallyProjects.json';
 
 let projectRepo = {
     get: function (resolve, reject) {

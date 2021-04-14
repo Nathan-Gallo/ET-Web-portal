@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   import BackButtonRow from "../common/BackButtonRow.svelte";
-  import BookCover from "../common/BookCover.svelte";
+  import ProjectCover from "../common/ProjectCover.svelte";
   import Button from "../common/Button.svelte";
   import Header from "../common/Header.svelte";
   import { httpGet, httpPut } from "../common/api.js";
@@ -37,6 +37,31 @@
     left: calc(10% + var(--spacingSmall));
     bottom: var(--spacingLarge);
   }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    grid-auto-rows: 12.8rem;
+    gap: var(--spacingMedium);
+    list-style: none;
+    max-width: 100%;
+    padding: 0;
+  }
+  li {
+    position: relative;
+    display: flex;
+    background: rgb(235, 247, 245);
+    background: linear-gradient(
+      180deg,
+      rgba(235, 247, 245, 1) 0%,
+      rgba(250, 251, 253, 1) 100%
+    );
+    border-radius: 15px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 5px 5px 10px 0px #ccc;
+  }
 </style>
 
 <BackButtonRow />
@@ -45,7 +70,7 @@
 
 <div class="detail">
   <div class="cover">
-    <BookCover {project} />
+    <ProjectCover {project} />
   </div>
   <div>
     <Header>About</Header>
