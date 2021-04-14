@@ -130,7 +130,7 @@
 
 
   ul {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     grid-auto-rows: 12.8rem;
