@@ -5,54 +5,52 @@
 </script>
 
 <main>
-<h2>Active POC's</h2>
-<ul>
-  {#each projects as project}
-    {#if project["Emerging Tech POC Pipeline"] == "Active POC"}
-      <li>
-        <ProjectCover interactive {project} /> 
-        <!--{project.Name} -->
-      </li>
-    {/if}
-  {/each}
-</ul>
+  <h2>Active POC's</h2>
+  <ul>
+    {#each projects as project}
+      {#if project["Emerging Tech POC Pipeline"] == "Active POC"}
+        <li>
+          <ProjectCover interactive {project} />
+          <!--{project.Name} -->
+        </li>
+      {/if}
+    {/each}
+  </ul>
 
-<h2>Completed POC's</h2>
-<ul>
-  {#each projects as project}
-    {#if project["Emerging Tech POC Pipeline"] == "Post POC"}
-      <li>
-        <ProjectCover interactive {project} />
-      </li>
-    {/if}
-  {/each}
-</ul>
+  <h2>Completed POC's</h2>
+  <ul>
+    {#each projects as project}
+      {#if project["Emerging Tech POC Pipeline"] == "Post POC"}
+        <li>
+          <ProjectCover interactive {project} />
+        </li>
+      {/if}
+    {/each}
+  </ul>
 
-<h2>Upcoming POC's</h2>
-<ul>
-  {#each projects as project}
-    {#if project["Emerging Tech POC Pipeline"] == "Prepping for POC" || "Use Cases"}
-      <li>
-        <ProjectCover interactive {project} />
-      </li>
-    {/if}
-  {/each}
-</ul>
+  <h2>Upcoming POC's</h2>
+  <ul>
+    {#each projects as project}
+      {#if project["Emerging Tech POC Pipeline"] == "Prepping for POC" || "Use Cases"}
+        <li>
+          <ProjectCover interactive {project} />
+        </li>
+      {/if}
+    {/each}
+  </ul>
 
-<h2>Our Vendors</h2>
-<ul>
-  {#each projects as project}
-    {#if project["Emerging Tech POC Pipeline"] == "Vendors"}
-      <li class="static">
-        <!--<BookCover interactive {project} /> -->
-        {project.Name}
-      </li>
-    {/if}
-  {/each}
-</ul>
+  <h2>Our Vendors</h2>
+  <ul>
+    {#each projects as project}
+      {#if project["Emerging Tech POC Pipeline"] == "Vendors"}
+        <li class="static">
+          <!--<BookCover interactive {project} /> -->
+          {project.Name}
+        </li>
+      {/if}
+    {/each}
+  </ul>
 </main>
-
-
 
 <style>
   main {
@@ -105,15 +103,15 @@
     box-shadow: 5px 5px 10px 0px #ccc;
   }
   li:hover {
-  -webkit-transform: scale(.97);
-  -ms-transform: scale(.97);
-  transform: scale(.97);
-  transition: .4s;
+    -webkit-transform: scale(0.97);
+    -ms-transform: scale(0.97);
+    transform: scale(0.97);
+    transition: 0.4s;
   }
 
   .static:hover {
     -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-    }
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
 </style>
