@@ -1,262 +1,466 @@
 {
-  "projects":[
-  {
-    "User Story": "US9122",
-    "ID": "US9122",
-    "Name": "OpenLegacy PoC",
-    "Emerging Tech POC Pipeline": "Active POC"
-  },
-  {
-    "User Story": "US9127",
-    "ID": "US9127",
-    "Name": "Oracle Forms and Reports - Remediation Strategy",
-    "Emerging Tech POC Pipeline": "Active POC"
-  },
-  {
-    "User Story": "US9354",
-    "ID": "US9354",
-    "Name": "Document Ingestion and Extraction PoC",
-    "Emerging Tech POC Pipeline": "Post POC"
-  },
-  {
-    "User Story": "US9456",
-    "ID": "US9456",
-    "Name": "Document Ingestion and Extraction CoE",
-    "Emerging Tech POC Pipeline": "Prepping for POC"
-  },
-  {
-    "User Story": "US9512",
-    "ID": "US9512",
-    "Name": "Emerging Tech Rally Board",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US9513",
-    "ID": "US9513",
-    "Name": "Claims Medical Forms Rule Engine Low Code",
-    "Emerging Tech POC Pipeline": "Use Cases"
-  },
-  {
-    "User Story": "US9514",
-    "ID": "US9514",
-    "Name": "Microsoft Teams 'Roll your own' Chatbot Bakeoff",
-    "Emerging Tech POC Pipeline": "Use Cases"
-  },
-  {
-    "User Story": "US9603",
-    "ID": "US9603",
-    "Name": "Initiative A Vendors",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US9508",
-    "ID": "US9508",
-    "Name": "Virtual VC Roadshow '21",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US9637",
-    "ID": "US9637",
-    "Name": "Fusion 12.2.1.4 Upgrade",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US9642",
-    "ID": "US9642",
-    "Name": "Icon 5.x Upgrade",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US9643",
-    "ID": "US9643",
-    "Name": "Guide Wire PolicyCenter Upgrade",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US9833",
-    "ID": "US9833",
-    "Name": "Red Hat 6 Upgrade",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US9834",
-    "ID": "US9834",
-    "Name": "Jenkins Next",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US10170",
-    "ID": "US10170",
-    "Name": "Holistic Document Ingestion Process Analysis",
-    "Emerging Tech POC Pipeline": "Use Cases"
-  },
-  {
-    "User Story": "US10348",
-    "ID": "US10348",
-    "Name": "Oracle Forms and Reports - Remediation Strategy",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US10369",
-    "ID": "US10369",
-    "Name": "Hyperscience - Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10370",
-    "ID": "US10370",
-    "Name": "Indico - Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10372",
-    "ID": "US10372",
-    "Name": "Chisel AI - Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10373",
-    "ID": "US10373",
-    "Name": "Ernst & Young - Services Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10374",
-    "ID": "US10374",
-    "Name": "Renaps - Oracle Tools",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10375",
-    "ID": "US10375",
-    "Name": "OpenLegacy - API Automation",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10376",
-    "ID": "US10376",
-    "Name": "Groundspeed - Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10377",
-    "ID": "US10377",
-    "Name": "Cap Gemini - Services Oracle Tools Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10378",
-    "ID": "US10378",
-    "Name": "Cognizant Services Oracle Tools Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10380",
-    "ID": "US10380",
-    "Name": "Microsoft - Services Document Ingestion Low Code",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10381",
-    "ID": "US10381",
-    "Name": "Google Services Document Ingestion Cloud",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10382",
-    "ID": "US10382",
-    "Name": "Pryon Chatbot",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10383",
-    "ID": "US10383",
-    "Name": "Expert.AI Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10384",
-    "ID": "US10384",
-    "Name": "Synodex Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10388",
-    "ID": "US10388",
-    "Name": "Pega - Low Code",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10389",
-    "ID": "US10389",
-    "Name": "EXL - Document Ingestion",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10390",
-    "ID": "US10390",
-    "Name": "UIPath - Low Code",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10391",
-    "ID": "US10391",
-    "Name": "Nintex - Low Code",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10392",
-    "ID": "US10392",
-    "Name": "PsiQuantum - Quantum Computing",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10393",
-    "ID": "US10393",
-    "Name": "Return2 Data SecDevOps",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10394",
-    "ID": "US10394",
-    "Name": "Solo.io API Infrastructure",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10395",
-    "ID": "US10395",
-    "Name": "Moogsoft - DevOps",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US10396",
-    "ID": "US10396",
-    "Name": "Infosys - Services Oracle Tools",
-    "Emerging Tech POC Pipeline": "Vendors"
-  },
-  {
-    "User Story": "US11546",
-    "ID": "US11546",
-    "Name": "Hartford Next Backup Recovery Modern",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US11785",
-    "ID": "US11785",
-    "Name": "Partner Reward Program",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US12569",
-    "ID": "US12569",
-    "Name": "O365 On Infrastructure Servers",
-    "Emerging Tech POC Pipeline": ""
-  },
-  {
-    "User Story": "US12573",
-    "ID": "US12573",
-    "Name": "Autosys Upgrade",
-    "Emerging Tech POC Pipeline": ""
-  }
-]
+  "projects": [
+    {
+      "User Story": "US9122",
+      "ID": "US9122",
+      "Name": "OpenLegacy PoC",
+      "Emerging Tech POC Pipeline": "Active POC",
+      "Description": "Test\n"
+    },
+    {
+      "User Story": "US9127",
+      "ID": "US9127",
+      "Name": "Oracle Forms and Reports - Remediation Strategy",
+      "Emerging Tech POC Pipeline": "Active POC",
+      "Description": ""
+    },
+    {
+      "User Story": "US9354",
+      "ID": "US9354",
+      "Name": "Document Ingestion and Extraction PoC",
+      "Emerging Tech POC Pipeline": "Post POC",
+      "Description": "Validating Vendor Automation capabilities for Document Ingestion and Extraction, specifically focused on Vehicle Endorsements and Broker Specs for MLC & GS\n"
+    },
+    {
+      "User Story": "US9456",
+      "ID": "US9456",
+      "Name": "Document Ingestion and Extraction CoE",
+      "Emerging Tech POC Pipeline": "Prepping for POC",
+      "Description": "Extending the original Document Ingestion and Extraction PoC to include a 2nd round of vendors and additional internal use cases to begin to build a center of excellence to provide guidance and resources for future DIE needs.\n"
+    },
+    {
+      "User Story": "US9513",
+      "ID": "US9513",
+      "Name": "Claims Medical Forms Rule Engine Low Code",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": ""
+    },
+    {
+      "User Story": "US9514",
+      "ID": "US9514",
+      "Name": "Microsoft Teams 'Roll your own' Chatbot Bakeoff",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "Test various chatbot implementations for MS Teams integration include Pryon, MS & AWS Lex\n"
+    },
+    {
+      "User Story": "US10170",
+      "ID": "US10170",
+      "Name": "Holistic Document Ingestion Process Analysis",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "Potential POC to evaluate improvements in process and additional automation streams to increase accuracy and straight thru processing potential in document ingestion stream \n"
+    },
+    {
+      "User Story": "US10369",
+      "ID": "US10369",
+      "Name": "Hyperscience",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10370",
+      "ID": "US10370",
+      "Name": "Indico",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10371",
+      "ID": "US10371",
+      "Name": "Instabase",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10372",
+      "ID": "US10372",
+      "Name": "Chisel AI",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10373",
+      "ID": "US10373",
+      "Name": "Ernst & Young",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10374",
+      "ID": "US10374",
+      "Name": "Renaps",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10375",
+      "ID": "US10375",
+      "Name": "OpenLegacy",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10376",
+      "ID": "US10376",
+      "Name": "Groundspeed",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10377",
+      "ID": "US10377",
+      "Name": "Cap Gemini",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10378",
+      "ID": "US10378",
+      "Name": "Cognizant",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10380",
+      "ID": "US10380",
+      "Name": "Microsoft",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10381",
+      "ID": "US10381",
+      "Name": "Google",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10382",
+      "ID": "US10382",
+      "Name": "Pryon",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10383",
+      "ID": "US10383",
+      "Name": "Expert.AI",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10384",
+      "ID": "US10384",
+      "Name": "Synodex",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10388",
+      "ID": "US10388",
+      "Name": "Pega",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10389",
+      "ID": "US10389",
+      "Name": "EXL",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10390",
+      "ID": "US10390",
+      "Name": "UIPath",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10391",
+      "ID": "US10391",
+      "Name": "Nintex",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10392",
+      "ID": "US10392",
+      "Name": "PsiQuantum",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10393",
+      "ID": "US10393",
+      "Name": "Return2 Data",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10394",
+      "ID": "US10394",
+      "Name": "Solo.io",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10395",
+      "ID": "US10395",
+      "Name": "Moogsoft",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10396",
+      "ID": "US10396",
+      "Name": "Infosys",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10398",
+      "ID": "US10398",
+      "Name": "Okera",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10399",
+      "ID": "US10399",
+      "Name": "Hysolate",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10400",
+      "ID": "US10400",
+      "Name": "Cybergrx",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10402",
+      "ID": "US10402",
+      "Name": "zylo",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10403",
+      "ID": "US10403",
+      "Name": "Appian",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10404",
+      "ID": "US10404",
+      "Name": "Attivo",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10405",
+      "ID": "US10405",
+      "Name": "SysDig",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10407",
+      "ID": "US10407",
+      "Name": "Tidal Scale",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10408",
+      "ID": "US10408",
+      "Name": "Persado",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10409",
+      "ID": "US10409",
+      "Name": "Reonomy",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10410",
+      "ID": "US10410",
+      "Name": "Zeronorth",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10411",
+      "ID": "US10411",
+      "Name": "Espresa",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10412",
+      "ID": "US10412",
+      "Name": "Kinetic",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10413",
+      "ID": "US10413",
+      "Name": "Prenav",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10414",
+      "ID": "US10414",
+      "Name": "Arturo",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10415",
+      "ID": "US10415",
+      "Name": "Enview",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10416",
+      "ID": "US10416",
+      "Name": "Descartes Lab",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10417",
+      "ID": "US10417",
+      "Name": "Primer",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10418",
+      "ID": "US10418",
+      "Name": "Moveworks",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10419",
+      "ID": "US10419",
+      "Name": "Leapyear",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10420",
+      "ID": "US10420",
+      "Name": "Snorkel",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10421",
+      "ID": "US10421",
+      "Name": "Unqork",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10422",
+      "ID": "US10422",
+      "Name": "Vidado",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10423",
+      "ID": "US10423",
+      "Name": "KPMG",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10424",
+      "ID": "US10424",
+      "Name": "BoardwalkTech",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10425",
+      "ID": "US10425",
+      "Name": "Hypercube",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10426",
+      "ID": "US10426",
+      "Name": "Linguamatics",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10427",
+      "ID": "US10427",
+      "Name": "Appscale",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10428",
+      "ID": "US10428",
+      "Name": "Airkit",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10429",
+      "ID": "US10429",
+      "Name": "Acord",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10430",
+      "ID": "US10430",
+      "Name": "Urbanico",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10431",
+      "ID": "US10431",
+      "Name": "Amelia",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10432",
+      "ID": "US10432",
+      "Name": "Mulesoft",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10433",
+      "ID": "US10433",
+      "Name": "Hi Marley",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    },
+    {
+      "User Story": "US10434",
+      "ID": "US10434",
+      "Name": "Agara Labs",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": ""
+    }
+  ]
 }
