@@ -68,6 +68,8 @@
   <br />
   <span class="preamble">Goals</span>
 
+  <div><img src="./logo.png" alt="technology graphic" /></div>
+<!--
   <div class="goals">
     <ul class="stacked">
       <li class="interactive static">
@@ -93,6 +95,7 @@
       </li>
     </ul>
   </div>
+  -->
 </main>
 
 <style>

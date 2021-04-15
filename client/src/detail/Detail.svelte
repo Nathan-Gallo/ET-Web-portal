@@ -47,7 +47,7 @@
     margin: auto;
   }
   .detail {
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(40vw, 20rem));
     grid-template-rows: minmax(64vw, 32rem) auto;
     gap: var(--spacingXLarge);
@@ -85,18 +85,13 @@
 
 <div class="detail">
   <div>
-    <Header>Use Case</Header>
-    <p>{tag}</p>
-  </div>
-  <div>
     <Header>About</Header>
     <p>{project.Description}</p>
   </div>  
   <div>
-    <Header>Vendors</Header>
-    {#each vendors as vendor}
-    <p>{vendor.Name}</p>
-    {/each}
+    <Header>Use Case</Header>
+    <p>{tag}</p>
   </div>
+
 </div>
 </main>
