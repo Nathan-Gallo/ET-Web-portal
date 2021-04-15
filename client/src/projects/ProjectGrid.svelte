@@ -8,7 +8,7 @@
   <h2>Active POC's</h2>
   <ul>
     {#each projects as project}
-      {#if project["Emerging Tech POC Pipeline"] == "Active POC"}
+      {#if project["Emerging Tech POC Pipeline"] === "Active POC"}
         <li>
           <ProjectCover interactive {project} />
           <!--{project.Name} -->
@@ -20,7 +20,7 @@
   <h2>Completed POC's</h2>
   <ul>
     {#each projects as project}
-      {#if project["Emerging Tech POC Pipeline"] == "Post POC"}
+      {#if project["Emerging Tech POC Pipeline"] === "Post POC"}
         <li>
           <ProjectCover interactive {project} />
         </li>
@@ -31,7 +31,7 @@
   <h2>Upcoming POC's</h2>
   <ul>
     {#each projects as project}
-      {#if project["Emerging Tech POC Pipeline"] == "Prepping for POC" || "Use Cases"}
+      {#if project["Emerging Tech POC Pipeline"] === "Prepping for POC"}
         <li>
           <ProjectCover interactive {project} />
         </li>
@@ -39,22 +39,11 @@
     {/each}
   </ul>
 
-  <h2>Our Vendors</h2>
-  <ul>
-    {#each projects as project}
-      {#if project["Emerging Tech POC Pipeline"] == "Vendors"}
-        <li class="static">
-          <!--<BookCover interactive {project} /> -->
-          {project.Name}
-        </li>
-      {/if}
-    {/each}
-  </ul>
 </main>
 
 <style>
   main {
-    max-width: 1500px;
+    max-width: 1400px;
     margin: auto;
   }
   header {
@@ -79,7 +68,7 @@
     margin: 0 auto;
   }
   ul {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     grid-auto-rows: 12.8rem;

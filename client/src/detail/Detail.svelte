@@ -10,32 +10,47 @@
   export let id;
 
   let project = {};
-
+  let tag;
+  let projects = [];
+  let vendors = [];
+/*
   onMount(async _ => {
-    const { data } = await httpGet("/" + id);
+    let { data } = await httpGet("/" + id);
     project = data;
-    console.log(project)
+    tag = project.Tags.replace("_", " ");
+  });
+*/
+  onMount(async _ => {
+    const { data } = await httpGet("/?_sort=id&_order=desc");
+    projects = data.projects;
+    let length = projects.length
+    for(let i=0; i <length; i++){
+      if(id == projects[i]["User Story"]){
+        project = projects[i]
+      }
+    }
+    tag = project.Tags.replace("_", " ");
+
+    for(let i = 0; i < length; i++) {
+      if(project.Tags == projects[i].Tags && projects[i]["Emerging Tech POC Pipeline"] == "Vendors") {
+        vendors.push(projects[i])
+      }
+    }
   });
 
+  console.log(vendors)
 </script>
 
 <style>
+  main {
+    max-width: 1400px;
+    margin: auto;
+  }
   .detail {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fill, minmax(40vw, 20rem));
     grid-template-rows: minmax(64vw, 32rem) auto;
     gap: var(--spacingXLarge);
-  }
-  .cover {
-    position: relative;
-    display: flex;
-    margin-bottom: var(--spacingXLarge);
-  }
-  .favorite {
-    position: absolute;
-    width: 90%;
-    left: calc(10% + var(--spacingSmall));
-    bottom: var(--spacingLarge);
   }
 
   ul {
@@ -63,17 +78,25 @@
     box-shadow: 5px 5px 10px 0px #ccc;
   }
 </style>
-
+<main>
 <BackButtonRow />
 
 <Header element="h1" size="large">{project.Name}</Header>
 
 <div class="detail">
-  <div class="cover">
-    <ProjectCover {project} />
+  <div>
+    <Header>Use Case</Header>
+    <p>{tag}</p>
   </div>
   <div>
     <Header>About</Header>
-    <p>{project.Name}</p>
+    <p>{project.Description}</p>
+  </div>  
+  <div>
+    <Header>Vendors</Header>
+    {#each vendors as vendor}
+    <p>{vendor.Name}</p>
+    {/each}
   </div>
 </div>
+</main>
