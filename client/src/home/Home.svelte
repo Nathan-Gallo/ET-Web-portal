@@ -67,8 +67,7 @@
   <hr />
   <br />
   <span class="preamble">Goals</span>
-
-  <div><img src="./logo.png" alt="technology graphic" /></div>
+  <img class="center" src="./pillars.png" alt="technology graphic" />
 <!--
   <div class="goals">
     <ul class="stacked">
@@ -129,8 +128,17 @@
     display: flex;
   }
   .centered {
-    width: 1500px;
-    margin: 0 auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
   }
 
   img {
