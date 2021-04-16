@@ -12,7 +12,7 @@ export function httpGet3000(path) {
 }
 
 export function httpPost(path, data) {
-  return req(path, 'POST', data)
+  return doPost(data)
 }
 
 export function httpPut(path, data) {
@@ -25,7 +25,7 @@ async function req(path, method = 'GET', data) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: data && JSON.stringify(data)
+    body: JSON.stringify(data)
   })
   const json = await res.json()
   return { ok: res.ok, data: json.data }
@@ -43,3 +43,14 @@ async function req3000(path, method = 'GET', data) {
   return { ok: res.ok, data: json.data }
 }
 
+
+async function doPost(data) {
+  const res = await fetch(testBookApiUrl, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+
+  const json = await res.json()
+  result = JSON.stringify(json)
+  return result;
+}

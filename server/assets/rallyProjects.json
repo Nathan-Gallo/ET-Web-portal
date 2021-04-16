@@ -5,7 +5,7 @@
       "ID": "US9122",
       "Name": "OpenLegacy PoC",
       "Emerging Tech POC Pipeline": "Active POC",
-      "Description": "Test\n",
+      "Description": "Evaluating OpenLegacy automation platform to expose existing services on our mainframe systems running transactions based on both IMS COBOL and CICS COBOL with RESTful APIs\n",
       "Tags": "API_Automation"
     },
     {
@@ -15,6 +15,14 @@
       "Emerging Tech POC Pipeline": "Active POC",
       "Description": "",
       "Tags": "Oracle_Tools"
+    },
+    {
+      "User Story": "US10363",
+      "ID": "US10363",
+      "Name": "Document Ingestion and Extraction PoC Phase 2",
+      "Emerging Tech POC Pipeline": "Active POC",
+      "Description": "Validating Vendor Automation capabilities for Document Ingestion and Extraction, specifically focused on Vehicle Endorsements and Broker Specs for MLC & GS\n",
+      "Tags": "Document_Ingestion"
     },
     {
       "User Story": "US9354",
@@ -33,6 +41,38 @@
       "Tags": "Document_Ingestion"
     },
     {
+      "User Story": "US10364",
+      "ID": "US10364",
+      "Name": "Group Benefits Medical Records Ingestion and Extraction PoC",
+      "Emerging Tech POC Pipeline": "Prepping for POC",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10366",
+      "ID": "US10366",
+      "Name": "Pryon Wikibot for Analytic Platforms/Tool Enablement & Support team",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10387",
+      "ID": "US10387",
+      "Name": "Billing as a service",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10368",
+      "ID": "US10368",
+      "Name": "AWS Vendor Sandbox",
+      "Emerging Tech POC Pipeline": "Prioritization",
+      "Description": "",
+      "Tags": ""
+    },
+    {
       "User Story": "US9513",
       "ID": "US9513",
       "Name": "Claims Medical Forms Rule Engine Low Code",
@@ -49,11 +89,155 @@
       "Tags": ""
     },
     {
+      "User Story": "US10365",
+      "ID": "US10365",
+      "Name": "Group Benefits Legal Documents Contextualation",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
       "User Story": "US10170",
       "ID": "US10170",
       "Name": "Holistic Document Ingestion Process Analysis",
       "Emerging Tech POC Pipeline": "Use Cases",
       "Description": "Potential POC to evaluate improvements in process and additional automation streams to increase accuracy and straight thru processing potential in document ingestion stream \n",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10367",
+      "ID": "US10367",
+      "Name": "Personal Lines Document Ingestion",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10441",
+      "ID": "US10441",
+      "Name": "OpenIDL AWS",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10385",
+      "ID": "US10385",
+      "Name": "Group Benefits Customized videos",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10438",
+      "ID": "US10438",
+      "Name": "Low Code Bakeoff",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10443",
+      "ID": "US10443",
+      "Name": "GB: Billing as a service",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10444",
+      "ID": "US10444",
+      "Name": "Call Center Agent Assist",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10445",
+      "ID": "US10445",
+      "Name": "ET: Automated POC Template Assistant",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10442",
+      "ID": "US10442",
+      "Name": "GB: Low code Payment  ingestion",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10440",
+      "ID": "US10440",
+      "Name": "Blockchain DMV",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10439",
+      "ID": "US10439",
+      "Name": "Acord Adept Document platform",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10446",
+      "ID": "US10446",
+      "Name": "Global Knowledge Management Solution",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10447",
+      "ID": "US10447",
+      "Name": "MS Powerapps Tool",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10448",
+      "ID": "US10448",
+      "Name": "MS NLP LUIS POC",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10450",
+      "ID": "US10450",
+      "Name": "SecDevOps Tools Bakeoff",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10451",
+      "ID": "US10451",
+      "Name": "Cloud Cost Savings POC",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10449",
+      "ID": "US10449",
+      "Name": "Quantum Compute Use Case",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
+      "Tags": ""
+    },
+    {
+      "User Story": "US10453",
+      "ID": "US10453",
+      "Name": "Kubeflow",
+      "Emerging Tech POC Pipeline": "Use Cases",
+      "Description": "",
       "Tags": ""
     },
     {
@@ -247,6 +431,14 @@
       "Emerging Tech POC Pipeline": "Vendors",
       "Description": "",
       "Tags": "Oracle_Tools"
+    },
+    {
+      "User Story": "US10397",
+      "ID": "US10397",
+      "Name": "Firebolt",
+      "Emerging Tech POC Pipeline": "Vendors",
+      "Description": "",
+      "Tags": "Cloud_Data_Warehouse"
     },
     {
       "User Story": "US10398",
@@ -528,5 +720,5 @@
       "Description": "",
       "Tags": "Chat_Bot"
     }
-  ]
+   ]
 }

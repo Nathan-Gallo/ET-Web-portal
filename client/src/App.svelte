@@ -6,6 +6,8 @@
   import Home from "./home/Home.svelte";
   import Projects from "./projects/Projects.svelte";
   import Nav from './nav/nav.svelte';
+  import UseCases from './useCases/UseCases.svelte';
+  import Vendors from "./Vendors/Vendors.svelte";
 
   export let url = "";
 </script>
@@ -30,6 +32,12 @@
     </Route>
     <Route path="/projects">
       <Projects />
+    </Route>
+    <Route path="/useCases">
+      <UseCases />
+    </Route>
+    <Route path="/vendors">
+      <Vendors />
     </Route>
   </main>
 </Router>

@@ -56,9 +56,9 @@
   <div class="centered">
     <ul>
       <li class="interactive">Center of Excellence</li>
-      <li class="interactive">POCs</li>
-      <li class="interactive">Use Cases</li>
-      <li class="interactive">Vendors</li>
+      <li class="interactive"><a href="/projects">POCs</a></li>
+      <li class="interactive"><a href="/useCases">Use Cases</a></li>
+      <li class="interactive"><a href="/vendors">Vendors</a></li>
       <li class="interactive">White Papers</li>
     </ul>
   </div>
@@ -66,8 +66,7 @@
   <br />
   <hr />
   <br />
-  <span class="preamble">Goals</span>
-  <img class="center" src="./pillars.png" alt="technology graphic" />
+  <img class="center" src="./pillars.png" alt="Pillars of Emerging Tech" />
 
 </main>
 
@@ -132,6 +131,11 @@
     list-style: none;
     max-width: 100%;
     padding: 0;
+  }
+
+  a {
+    text-decoration: inherit;
+    color: inherit;
   }
   .interactive {
     position: relative;

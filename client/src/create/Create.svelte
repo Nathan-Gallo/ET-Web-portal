@@ -1,6 +1,6 @@
 <script>
   import { navigate } from "svelte-routing";
-
+  
   import BackButtonRowHome from "../common/BackButtonRowHome.svelte";
   import ProjectCover from "../common/ProjectCover.svelte";
   import Button from "../common/Button.svelte";
@@ -8,30 +8,40 @@
   import { httpPost } from "../common/api.js";
   import TextInput from "./TextInput.svelte";
 
-  let title = "";
-  let author = "";
-  let cover = "";
-  let about = "";
+  let name = "";
+  let email = "";
+  let team = "";
+  let description = "";
+  let result = null
 
-  $: book = { title, author, cover, about };
+  $: request = { name, email, team, description };
 
   async function handleSubmit(event) {
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    const newBook = {
-      ...book,
-      variation: getRandomInt(0, 2),
-      favorite: false,
-    };
 
-    const { ok } = await httpPost("/", newBook);
+    const { ok } = await httpPost("/", request);
     if (ok) {
       navigate("/");
     }
   }
+
+  async function doPost (event) {
+		const res = await fetch('http://localhost:8081/api/projects', {
+      method: 'POST',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+      },
+			body: JSON.stringify(request)
+		})
+		
+		const json = await res.json()
+    let rawResult = JSON.stringify(json)
+    result = JSON.parse(rawResult)
+
+    if(result.status == 201){
+      navigate("/")
+    }
+	}
 </script>
 
 <main>
@@ -39,24 +49,16 @@
 
   <Header element="h1" size="large">Submit an Idea</Header>
 
-  <form on:submit|preventDefault={handleSubmit}>
+  <form on:submit|preventDefault={doPost}>
     <div class="fields">
-      <TextInput label="Your Name" bind:value={title} />
-      <TextInput label="Your Email" bind:value={author} />
-      <TextInput label="Your Team/Group" bind:value={cover} />
-      <TextInput label="Business Need / Usecase" bind:value={about} multiline />
+      <TextInput label="Your Name" bind:value={name} />
+      <TextInput label="Your Email" bind:value={email} />
+      <TextInput label="Your Team/Group" bind:value={team} />
+      <TextInput label="Business Need / Usecase" bind:value={description} multiline />
       <div>
         <Button>Submit</Button>
       </div>
     </div>
-
-    <!--
-  <div>
-    <Header>Preview</Header>
-    <div class="preview">
-      <ProjectCover {book} />
-    </div>
-  </div>-->
   </form>
 </main>
 

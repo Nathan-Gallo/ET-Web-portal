@@ -105,59 +105,6 @@ router.get('/category/:category', function (req, res, next) {
     });
 });
 
-// Create GET/difficulty to return all recipes in a difficulty type
-router.get('/difficulty/:difficulty', function (req, res, next) {
-    recipeRepo.getByDifficulty(req.params.difficulty, function (data) {
-        if (data.length != 0) {
-            res.status(200).json({
-                "status": 200,
-                "statusText": "OK",
-                "message": "All recipes in difficulty: '" + req.params.difficulty + "' retrieved",
-                "data": data
-            });
-        }
-        else {
-            res.status(404).json({
-                "status": 404,
-                "statusText": "Not Found",
-                "message": "The recipes in category '" + req.params.difficulty + "' could not be found.",
-                "error": {
-                    "code": "NOT_FOUND",
-                    "message": "The recipes in category '" + req.params.difficulty + "' could not be found."
-                }
-            });
-        }
-    }, function (err) {
-        next(err);
-    });
-});
-
-// Create GET/difficulty to return all recipes in a difficulty type
-router.get('/type/:type', function (req, res, next) {
-    recipeRepo.getByType(req.params.type, function (data) {
-        if (data.length != 0) {
-            res.status(200).json({
-                "status": 200,
-                "statusText": "OK",
-                "message": "All recipes in type: '" + req.params.type + "' retrieved",
-                "data": data
-            });
-        }
-        else {
-            res.status(404).json({
-                "status": 404,
-                "statusText": "Not Found",
-                "message": "The recipes in type '" + req.params.type + "' could not be found.",
-                "error": {
-                    "code": "NOT_FOUND",
-                    "message": "The recipes in type '" + req.params.type + "' could not be found."
-                }
-            });
-        }
-    }, function (err) {
-        next(err);
-    });
-});
 
 // Create GET/search?id=n&name=str to search for recipes by "id" and/or "name"
 router.get('/search', function (req, res, next) {
@@ -217,13 +164,14 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
-router.post('/', urlencodedParser, function (req, res, next) {
-    console.dir("Server.js req.body #" + req.body);
-    recipeRepo.insert(req.body, function (data) {
+router.post('/projects', function (req, res, next) {
+    console.dir("Server.js req.body #" + req);
+    console.log(req.body)
+    projectRepo.insert(req.body, function (data) {
         res.status(201).json({
             "status": 201,
             "statusText": "Created",
-            "message": "New Recipe Added",
+            "message": "New Request Added",
             "data": data
         });
     }, function (err) {

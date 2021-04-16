@@ -1,5 +1,6 @@
 let fs = require('fs');
 const FILE_NAME = './assets/rallyProjects.json';
+const REQUEST_FILE = './assets/requestFile.json';
 
 let projectRepo = {
     get: function (resolve, reject) {
@@ -76,62 +77,39 @@ let projectRepo = {
         });
     },
     insert: function (newData, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
+        fs.readFile(REQUEST_FILE, function (err, data) {
             if (err) {
                 reject(err);
             }
             else {
-                let recipes = JSON.parse(data);
-                if (recipes.find(u => u.name.toLowerCase() == newData.name.toLowerCase())) {
-                    reject(err);
-                }
-                else {
-                    // Make a new object to create the ID
-                    let newRecipe;
-                    if (newData.image) {
-                        let backSlash = newData.image.lastIndexOf("\\");
-                        let image = newData.image.substr(backSlash + 1);
-                        newRecipe = {
-                            id: recipes.length + 1,
-                            name: newData.name,
-                            category: newData.category,
-                            type: newData.type,
-                            difficulty: newData.difficulty,
-                            image: image,
-                            ingredients: {
-                                meat: newData.ingredients.meat,
-                                curingIngredients: newData.ingredients.curingIngredients,
-                                aromatics: newData.ingredients.aromatics
-                            },
-                            steps: newData.steps
-                        };
+                let requests = JSON.parse(data);
+                console.dir(requests)
+                //if (projects.find(u => u.name.toLowerCase() == newData.name.toLowerCase())) {
+                //     reject(err);
+                //  }
+                // else {
+                // Make a new object to create the ID
+                let newRequest;
+
+
+                newRequest = {
+                    id: requests.length + 1,
+                    name: newData.name,
+                    email: newData.email,
+                    team: newData.team,
+                    description: newData.description,
+                };
+
+                requests.push(newRequest);
+                fs.writeFile(REQUEST_FILE, JSON.stringify(requests), function (err) {
+                    if (err) {
+                        reject(err);
                     }
                     else {
-                        newRecipe = {
-                            id: recipes.length + 1,
-                            name: newData.name,
-                            category: newData.category,
-                            type: newData.type,
-                            difficulty: newData.difficulty,
-                            ingredients: {
-                                meat: newData.ingredients.meat,
-                                curingIngredients: newData.ingredients.curingIngredients,
-                                aromatics: newData.ingredients.aromatics
-                            },
-                            steps: newData.steps
-                        };
+                        resolve(newData);
                     }
-
-                    recipes.push(newRecipe);
-                    fs.writeFile(FILE_NAME, JSON.stringify(recipes), function (err) {
-                        if (err) {
-                            reject(err);
-                        }
-                        else {
-                            resolve(newData);
-                        }
-                    });
-                }
+                });
+                // }
             }
         });
     },
