@@ -38,7 +38,6 @@
       {/if}
     {/each}
   </ul>
-
 </main>
 
 <style>
@@ -46,27 +45,7 @@
     max-width: 1400px;
     margin: auto;
   }
-  header {
-    margin: var(--spacingMedium) 0 var(--spacingLarge) 0;
-    text-transform: uppercase;
-  }
-  .preamble {
-    display: block;
-  }
-  h1 {
-    font-size: var(--typeSizeXLarge);
-    font-weight: var(--typeWeightBold);
-    line-height: var(--typeLineHeightTight);
-  }
 
-  .greeting {
-    font-size: var(--typeSizeSmall);
-  }
-
-  .centered {
-    width: 1500px;
-    margin: 0 auto;
-  }
   ul {
     display: flex;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));

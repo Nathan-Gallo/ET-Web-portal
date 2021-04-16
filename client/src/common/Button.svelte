@@ -14,8 +14,8 @@
   </button>
 {/if}
 
-<style >
-   .button {
+<style>
+  .button {
     background: var(--colorCta);
     border: none;
     border-radius: calc(

@@ -3,7 +3,7 @@
 </script>
 
 <nav>
-  <Button to="/projects">&lt; Back</Button>
+  <Button to="/">&lt; Back</Button>
 </nav>
 
 <style>

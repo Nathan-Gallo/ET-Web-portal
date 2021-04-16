@@ -1,7 +1,7 @@
 <script>
   import { navigate } from "svelte-routing";
 
-  import BackButtonRow from "../common/BackButtonRow.svelte";
+  import BackButtonRowHome from "../common/BackButtonRowHome.svelte";
   import ProjectCover from "../common/ProjectCover.svelte";
   import Button from "../common/Button.svelte";
   import Header from "../common/Header.svelte";
@@ -24,7 +24,7 @@
     const newBook = {
       ...book,
       variation: getRandomInt(0, 2),
-      favorite: false
+      favorite: false,
     };
 
     const { ok } = await httpPost("/", newBook);
@@ -34,9 +34,34 @@
   }
 </script>
 
-<style>
+<main>
+  <BackButtonRowHome />
 
-main {
+  <Header element="h1" size="large">Submit an Idea</Header>
+
+  <form on:submit|preventDefault={handleSubmit}>
+    <div class="fields">
+      <TextInput label="Your Name" bind:value={title} />
+      <TextInput label="Your Email" bind:value={author} />
+      <TextInput label="Your Team/Group" bind:value={cover} />
+      <TextInput label="Business Need / Usecase" bind:value={about} multiline />
+      <div>
+        <Button>Submit</Button>
+      </div>
+    </div>
+
+    <!--
+  <div>
+    <Header>Preview</Header>
+    <div class="preview">
+      <ProjectCover {book} />
+    </div>
+  </div>-->
+  </form>
+</main>
+
+<style>
+  main {
     max-width: 1500px;
     margin: auto;
   }
@@ -63,30 +88,3 @@ main {
     }
   }
 </style>
-<main>
-<BackButtonRow />
-
-
-<Header element="h1" size="large">Submit an Idea</Header>
-
-<form on:submit|preventDefault={handleSubmit}>
-  <div class="fields">
-    <TextInput label="Your Name" bind:value={title} />
-    <TextInput label="Your Email" bind:value={author} />
-    <TextInput label="Your Team/Group" bind:value={cover} />
-    <TextInput label="Business Need / Usecase" bind:value={about} multiline />
-    <div>
-      <Button>Submit</Button>
-    </div>
-  </div>
-
-  <!--
-  <div>
-    <Header>Preview</Header>
-    <div class="preview">
-      <ProjectCover {book} />
-    </div>
-  </div>-->
-</form>
-
-</main>

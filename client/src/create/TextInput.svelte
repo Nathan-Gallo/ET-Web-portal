@@ -4,6 +4,15 @@
   export let multiline = false;
 </script>
 
+<label>
+  <span>{label}</span>
+  {#if multiline}
+    <textarea bind:value />
+  {:else}
+    <input type="text" bind:value />
+  {/if}
+</label>
+
 <style>
   label {
     font-weight: var(--typeWeightBold);
@@ -25,12 +34,3 @@
     height: 8rem;
   }
 </style>
-
-<label>
-  <span>{label}</span>
-  {#if multiline}
-    <textarea bind:value />
-  {:else}
-    <input type="text" bind:value />
-  {/if}
-</label>

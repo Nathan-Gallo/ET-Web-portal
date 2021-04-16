@@ -3,6 +3,16 @@
   export let size = "medium";
 </script>
 
+{#if element === "h1"}
+  <h1 class={size}>
+    <slot />
+  </h1>
+{:else if element === "h2"}
+  <h2 class={size}>
+    <slot />
+  </h2>
+{/if}
+
 <style>
   h1,
   h2 {
@@ -18,13 +28,3 @@
     margin-bottom: var(--spacingLarge);
   }
 </style>
-
-{#if element === 'h1'}
-  <h1 class={size}>
-    <slot />
-  </h1>
-{:else if element === 'h2'}
-  <h2 class={size}>
-    <slot />
-  </h2>
-{/if}

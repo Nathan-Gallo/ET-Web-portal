@@ -13,33 +13,59 @@
   let tag;
   let projects = [];
   let vendors = [];
-/*
+  /*
   onMount(async _ => {
     let { data } = await httpGet("/" + id);
     project = data;
     tag = project.Tags.replace("_", " ");
   });
 */
-  onMount(async _ => {
+  onMount(async (_) => {
     const { data } = await httpGet("/?_sort=id&_order=desc");
     projects = data.projects;
-    let length = projects.length
-    for(let i=0; i <length; i++){
-      if(id == projects[i]["User Story"]){
-        project = projects[i]
+    let length = projects.length;
+
+    for (let i = 0; i < length; i++) {
+      if (id == projects[i]["User Story"]) {
+        project = projects[i];
+      }
+      if (
+        project.Tags == projects[i].Tags &&
+        projects[i]["Emerging Tech POC Pipeline"] == "Vendors"
+      ) {
+        vendors.push(projects[i]);
       }
     }
     tag = project.Tags.replace("_", " ");
-
-    for(let i = 0; i < length; i++) {
-      if(project.Tags == projects[i].Tags && projects[i]["Emerging Tech POC Pipeline"] == "Vendors") {
-        vendors.push(projects[i])
-      }
-    }
   });
 
-  console.log(vendors)
+  console.log(vendors);
 </script>
+
+<main>
+  <BackButtonRow />
+
+  <Header element="h1" size="large">{project.Name}</Header>
+
+  <div class="detail">
+    <div class="inner">
+      <Header>About</Header>
+      <p>{project.Description}</p>
+    </div>
+    <div>
+      <Header>Use Case</Header>
+      <p>{tag}</p>
+    </div>
+    <div>
+      <Header>Vendors</Header>
+      {#each projects as p}
+        {#if project.Tags == p.Tags && p["Emerging Tech POC Pipeline"] == "Vendors"}
+          <p>{p.Name}</p>
+        {/if}
+      {/each}
+    </div>
+  </div>
+</main>
 
 <style>
   main {
@@ -47,10 +73,10 @@
     margin: auto;
   }
   .detail {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fill, minmax(40vw, 20rem));
     grid-template-rows: minmax(64vw, 32rem) auto;
-    gap: var(--spacingXLarge);
+    gap: 10rem;
   }
 
   ul {
@@ -78,20 +104,3 @@
     box-shadow: 5px 5px 10px 0px #ccc;
   }
 </style>
-<main>
-<BackButtonRow />
-
-<Header element="h1" size="large">{project.Name}</Header>
-
-<div class="detail">
-  <div>
-    <Header>About</Header>
-    <p>{project.Description}</p>
-  </div>  
-  <div>
-    <Header>Use Case</Header>
-    <p>{tag}</p>
-  </div>
-
-</div>
-</main>

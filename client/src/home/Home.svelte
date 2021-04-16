@@ -68,33 +68,7 @@
   <br />
   <span class="preamble">Goals</span>
   <img class="center" src="./pillars.png" alt="technology graphic" />
-<!--
-  <div class="goals">
-    <ul class="stacked">
-      <li class="interactive static">
-        Excellence <div class="vl" />
-        <ul class="inner">
-          <li>
-            Be the Pathfinders for new technology at The Hartford, guiding
-            everyone forward and upward
-          </li>
-        </ul>
-      </li>
-      <li class="interactive static">
-        Explore <div class="vl" />
-        <ul class="inner"><li /></ul>
-      </li>
-      <li class="interactive static">
-        Engage <div class="vl" />
-        <ul class="inner"><li /></ul>
-      </li>
-      <li class="interactive static">
-        Deliver <div class="vl" />
-        <ul class="inner"><li /></ul>
-      </li>
-    </ul>
-  </div>
-  -->
+
 </main>
 
 <style>
