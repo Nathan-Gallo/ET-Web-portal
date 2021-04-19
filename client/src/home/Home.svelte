@@ -38,7 +38,7 @@
   <br /><br />
   <span class="preamble">Current Projects</span>
   <div class="centered">
-    <ul>
+    <ul class="icons">
       {#each projects as project}
         {#if project["Emerging Tech POC Pipeline"] == "Active POC"}
           <li class="interactive">
@@ -54,7 +54,7 @@
   <br />
 
   <div class="centered">
-    <ul>
+    <ul class="icons">
       <li class="interactive">Center of Excellence</li>
       <li class="interactive"><a href="/projects">POCs</a></li>
       <li class="interactive"><a href="/useCases">Use Cases</a></li>
@@ -66,11 +66,36 @@
   <br />
   <hr />
   <br />
-  <img class="center" src="./pillars.png" alt="Pillars of Emerging Tech" />
 
+  <span class="preamble c">The Four Tenants of Emerging Technology</span>
+  <br />
+    <table class="tg">
+    <tbody>
+      <tr>
+        <td class="tg-0pky">Evangelize</td>
+        <td class="tg-0pky"><ul><li>Be the Pathfinders for new technology at The Hartford, guiding everyone forward and upward</li></ul></td>
+      </tr>
+      <tr>
+        <td class="tg-0pky">Explore</td>
+        <td class="tg-0pky"><ul><li>Work with every level of the business to understand and identify the core technical &amp; business challenges that can be solved through emerging technology solutions</li></ul></td>
+      </tr>
+      <tr>
+        <td class="tg-0pky">Engage</td>
+        <td class="tg-0pky"><ul><li>Engage with solution engineering, partner business and technology teams to define the priorities and opportunities in each app area</li></ul></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">Deliver</td>
+        <td class="tg-0lax"><ul><li>Focus on Results and minimize cumbersome process</li></ul></td>
+      </tr>
+    </tbody>
+    </table>
+  <!--<img class="center" src="./pillars.png" alt="Pillars of Emerging Tech" />
+  -->
 </main>
 
 <style>
+
+
   main {
     max-width: 1400px;
     margin: auto;
@@ -122,7 +147,7 @@
     margin-bottom: 15px;
   }
 
-  ul {
+  .icons {
     display: flex;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
@@ -132,6 +157,14 @@
     max-width: 100%;
     padding: 0;
   }
+  .c {margin: auto;}
+  .tg  {margin: auto;border-collapse:collapse;border-spacing:0;}
+  .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+  .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+  .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:center}
+  .tg .tg-0lax{text-align:left;vertical-align:top}
 
   a {
     text-decoration: inherit;
