@@ -1,4 +1,4 @@
-export const bookApiUrl = 'http://localhost:8081/api/projects'
+export const bookApiUrl = 'http://localhost:8081/api'
 
 
 export function httpGet(path) {

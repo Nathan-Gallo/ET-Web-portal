@@ -15,10 +15,98 @@ app.use(express.json());
 // Configure CORS
 app.use(cors());
 
+var rally = require('rally'),
+    queryUtils = rally.util.query,
+    restApi = rally({
+        user: 'nathan.gallo@thehartford.com', //required if no api key, defaults to process.env.RALLY_USERNAME
+        pass: '!Pnj901599087', //required if no api key, defaults to process.env.RALLY_PASSWORD
+        server: 'https://rally1.rallydev.com',  //this is the default and may be omitted
+        requestOptions: {
+            headers: {
+                'X-RallyIntegrationName': 'My cool node.js program',  //while optional, it is good practice to
+                'X-RallyIntegrationVendor': 'My company',             //provide this header information
+                'X-RallyIntegrationVersion': '1.0'
+            }
+            //any additional request options (proxy options, timeouts, etc.)     
+        }
+    });
 
+async function queryAllStories() {
+    return restApi.query({
+        type: 'hierarchicalrequirement',
+        start: 1,
+        pageSize: 200,
+        limit: 200,
+        order: 'Rank',
+        fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+        scope: {
+            workspace: '', //specify to query entire workspace
+            project: '/project/480104022420', //specify to query a specific project
+            up: false, //true to include parent project results, false otherwise
+            down: true //true to include child project results, false otherwise
+        },
+        query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
+    });
+}
 
+async function querySingleStory(story) {
+    return restApi.query({
+        type: 'hierarchicalrequirement',
+        start: 1,
+        pageSize: 200,
+        limit: 200,
+        order: 'Rank',
+        fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+        scope: {
+            workspace: '', //specify to query entire workspace
+            project: '/project/480104022420', //specify to query a specific project
+            up: false, //true to include parent project results, false otherwise
+            down: true //true to include child project results, false otherwise
+        },
+        query: queryUtils.where('FormattedID', '=', story)
+    });
+}
+
+function queryAllVendors() {
+    return restApi.query({
+        type: 'hierarchicalrequirement',
+        start: 1,
+        pageSize: 200,
+        limit: 200,
+        order: 'Rank',
+        fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+        scope: {
+            workspace: '', //specify to query entire workspace
+            project: '/project/480104022420', //specify to query a specific project
+            up: false, //true to include parent project results, false otherwise
+            down: true //true to include child project results, false otherwise
+        },
+        query: queryUtils.where('EmergingTechPOCPipeline', '=', "Vendors")
+    });
+}
+function onSuccess(result) {
+    //console.log('Success!', result);
+}
+
+function onError(error) {
+    console.log('Failure!', error.message, error.errors);
+}
+
+router.get('/projects', async function (req, res, next) {
+    let data = await queryAllStories();
+    //console.log(data.Results)
+    res.status(200).json({
+        "status": 200,
+        "statusText": "OK",
+        "message": "All projects retrieved",
+        "data": data.Results
+    });
+});
+
+/*
 router.get('/projects', function (req, res, next) {
     projectRepo.get(function (data) {
+        console.log(data)
         res.status(200).json({
             "status": 200,
             "statusText": "OK",
@@ -29,30 +117,40 @@ router.get('/projects', function (req, res, next) {
         next(err);
     });
 });
+*/
+router.get('/projects/:userStory', async function (req, res, next) {
+    let data = await querySingleStory(req.params.userStory);
+    console.log(data)
+    if (data.length != 0) {
+        res.status(200).json({
+            "status": 200,
+            "statusText": "OK",
+            "message": "The user story: '" + req.params.userStory + "' retrieved",
+            "data": data.Results
+        });
+    }
+    else {
+        res.status(404).json({
+            "status": 404,
+            "statusText": "Not Found",
+            "message": "The user story '" + req.params.userStory + "' could not be found.",
+            "error": {
+                "code": "NOT_FOUND",
+                "message": "The user story '" + req.params.userStory + "' could not be found."
+            }
+        });
+    }
 
-router.get('/projects/:userStory', function (req, res, next) {
-    projectRepo.getByUserStory(req.params.userStory, function (data) {
-        if (data.length != 0) {
-            res.status(200).json({
-                "status": 200,
-                "statusText": "OK",
-                "message": "The user story: '" + req.params.userStory + "' retrieved",
-                "data": data
-            });
-        }
-        else {
-            res.status(404).json({
-                "status": 404,
-                "statusText": "Not Found",
-                "message": "The user story '" + req.params.userStory + "' could not be found.",
-                "error": {
-                    "code": "NOT_FOUND",
-                    "message": "The user story '" + req.params.userStory + "' could not be found."
-                }
-            });
-        }
-    }, function (err) {
-        next(err);
+});
+
+router.get('/vendors', async function (req, res, next) {
+    let data = await queryAllVendors();
+    console.log(data)
+    res.status(200).json({
+        "status": 200,
+        "statusText": "OK",
+        "message": "All vendors retrieved",
+        "data": data.Results
     });
 });
 

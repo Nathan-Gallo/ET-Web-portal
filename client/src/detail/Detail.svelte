@@ -10,24 +10,29 @@
   export let id;
 
   let project = {};
-  let tag;
   let projects = [];
-  let vendors = [];
+  let tags = [];
+  let tag;
+  let description;
 
   onMount(async (_) => {
-    const { data } = await httpGet("/?_sort=id&_order=desc");
-    projects = data.projects;
-    let length = projects.length;
+    const { data } = await httpGet("/projects/" + id);
+    project = data[0];
+    console.log(project)
+    
+    let tagArray = project.Tags._tagsNameArray
+    let length = tagArray.length
 
-    for (let i = 0; i < length; i++) {
-      if (id == projects[i]["User Story"]) {
-        project = projects[i];
-      }
+    for(let i = 0; i < length; i++){
+      let cleanedName = tagArray[i].Name.replace("_", " ")
+      tags.push(cleanedName)
     }
-    tag = project.Tags.replace("_", " ");
+    description = project.Description.replace(/(<([^>]+)>)/gi, "");
+    description = description.replace("&amp;", "&");
+    tag = tagArray[0].Name.replace("_", " ");
+    console.log(tags);
   });
-
-  console.log(vendors);
+  
 </script>
 
 <main>
@@ -38,11 +43,11 @@
   <div class="detail">
     <div class="inner">
       <Header>About</Header>
-      <p>{project.Description}</p>
+      <p>{description}</p>
     </div>
     <div>
       <Header>Use Case</Header>
-      <p>{tag}</p>
+        <p>{tag}</p>
     </div>
   </div>
 </main>
