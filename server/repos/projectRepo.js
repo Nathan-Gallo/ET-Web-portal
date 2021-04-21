@@ -2,16 +2,72 @@ let fs = require('fs');
 const FILE_NAME = './assets/rallyProjects.json';
 const REQUEST_FILE = './assets/requestFile.json';
 
-let projectRepo = {
-    get: function (resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
+
+var rally = require('rally'),
+    queryUtils = rally.util.query,
+    restApi = rally({
+        user: 'nathan.gallo@thehartford.com', //required if no api key, defaults to process.env.RALLY_USERNAME
+        pass: '!Pnj901599087', //required if no api key, defaults to process.env.RALLY_PASSWORD
+        server: 'https://rally1.rallydev.com',  //this is the default and may be omitted
+        requestOptions: {
+            headers: {
+                'X-RallyIntegrationName': 'My cool node.js program',  //while optional, it is good practice to
+                'X-RallyIntegrationVendor': 'My company',             //provide this header information
+                'X-RallyIntegrationVersion': '1.0'
             }
-            else {
-                resolve(JSON.parse(data));
-            }
+            //any additional request options (proxy options, timeouts, etc.)     
+        }
+    });
+
+async function queryEpicStories(query) {
+    if (query) {
+        return await restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 15,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('FormattedID', '=', 'US10382')
         });
+    } else {
+        return await restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 15,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
+        });
+    }
+}
+
+let projectRepo = {
+    /* get: function (resolve, reject) {
+         fs.readFile(FILE_NAME, function (err, data) {
+             if (err) {
+                 reject(err);
+             }
+             else {
+                 resolve(JSON.parse(data));
+             }
+         });
+     }, */
+    get: function (resolve, reject) {
+        resolve(queryEpicStories());
     },
     getByUserStory: function (userStory, resolve, reject) {
         fs.readFile(FILE_NAME, function (err, data) {

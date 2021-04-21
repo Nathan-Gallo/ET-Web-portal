@@ -6,8 +6,9 @@
 
     let projects = [];
     onMount(async function () {
-        const { data } = await httpGet("/?_sort=id&_order=desc");
-        projects = data.projects;
+        const { data } = await httpGet("/vendors");
+        console.log(data[0])
+        projects = data
     });
 </script>
 
@@ -15,11 +16,9 @@
     <h2>Vendors</h2>
     <ul>
       {#each projects as project}
-        {#if project["Emerging Tech POC Pipeline"] === "Vendors"}
-          <li>
-            <ProjectCover interactive {project} />
-          </li>
-        {/if}
+        <li>
+          <ProjectCover interactive {project} />
+        </li> 
       {/each}
     </ul>
 </main>

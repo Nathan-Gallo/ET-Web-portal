@@ -8,10 +8,9 @@
   <h2>Active POC's</h2>
   <ul>
     {#each projects as project}
-      {#if project["Emerging Tech POC Pipeline"] === "Active POC"}
+      {#if project.c_EmergingTechPOCPipeline === "Active POC"}
         <li>
           <ProjectCover interactive {project} />
-          <!--{project.Name} -->
         </li>
       {/if}
     {/each}
@@ -20,7 +19,7 @@
   <h2>Completed POC's</h2>
   <ul>
     {#each projects as project}
-      {#if project["Emerging Tech POC Pipeline"] === "Post POC"}
+      {#if project.c_EmergingTechPOCPipeline === "Post POC"}
         <li>
           <ProjectCover interactive {project} />
         </li>
@@ -31,7 +30,7 @@
   <h2>Upcoming POC's</h2>
   <ul>
     {#each projects as project}
-      {#if project["Emerging Tech POC Pipeline"] === "Prepping for POC"}
+      {#if project.c_EmergingTechPOCPipeline === "Prepping for POC"}
         <li>
           <ProjectCover interactive {project} />
         </li>

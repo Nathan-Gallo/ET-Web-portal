@@ -6,8 +6,8 @@
 
   let projects = [];
   onMount(async function () {
-    const { data } = await httpGet("/?_sort=id&_order=desc");
-    projects = data.projects;
+    const { data } = await httpGet("/projects");
+    projects = data;
   });
 </script>
 
@@ -40,10 +40,9 @@
   <div class="centered">
     <ul class="icons">
       {#each projects as project}
-        {#if project["Emerging Tech POC Pipeline"] == "Active POC"}
+        {#if project.c_EmergingTechPOCPipeline == "Active POC"}
           <li class="interactive">
-            <ProjectCover interactive {project} />
-            <!--{project.Name} -->
+            <ProjectCover interactive {project} />   
           </li>
         {/if}
       {/each}
@@ -91,6 +90,7 @@
     </table>
 
 </main>
+
 
 <style>
 

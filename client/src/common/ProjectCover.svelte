@@ -10,11 +10,11 @@
 </script>
 
 {#if interactive}
-  <a href={"/projects/" + project["User Story"]} use:links>
+  <a href={"/projects/" + project.FormattedID} use:links>
     <span class="title">{project.Name}</span>
   </a>
 {:else}
-  <a href={"/projects/" + project["User Story"]} use:links>
+  <a href={"/projects/" + project.FormattedID} use:links>
     <span class="title">{project.Name}</span>
   </a>
 {/if}

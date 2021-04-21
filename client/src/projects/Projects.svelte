@@ -6,8 +6,8 @@
 
     let projects = [];
     onMount(async function () {
-        const { data } = await httpGet("/?_sort=id&_order=desc");
-        projects = data.projects;
+        const { data } = await httpGet("/projects");
+        projects = data;
     });
 </script>
 
