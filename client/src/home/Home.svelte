@@ -89,8 +89,7 @@
       </tr>
     </tbody>
     </table>
-  <!--<img class="center" src="./pillars.png" alt="Pillars of Emerging Tech" />
-  -->
+
 </main>
 
 <style>
@@ -184,14 +183,6 @@
     font-weight: bold;
   }
 
-  /*
-  .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-      overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:center}
-  .tg .tg-0lax{text-align:left;vertical-align:top}
- */
   a {
     text-decoration: inherit;
     color: inherit;
