@@ -67,24 +67,24 @@
   <hr />
   <br />
 
-  <span class="preamble c">The Four Tenants of Emerging Technology</span>
+  <span class="preamble">The Four Tenants of Emerging Technology</span>
   <br />
     <table class="tg">
     <tbody>
       <tr>
-        <td class="tg-0pky">Evangelize</td>
+        <td class="tg-title">Evangelize</td>
         <td class="tg-0pky"><ul><li>Be the Pathfinders for new technology at The Hartford, guiding everyone forward and upward</li></ul></td>
       </tr>
       <tr>
-        <td class="tg-0pky">Explore</td>
+        <td class="tg-title">Explore</td>
         <td class="tg-0pky"><ul><li>Work with every level of the business to understand and identify the core technical &amp; business challenges that can be solved through emerging technology solutions</li></ul></td>
       </tr>
       <tr>
-        <td class="tg-0pky">Engage</td>
+        <td class="tg-title">Engage</td>
         <td class="tg-0pky"><ul><li>Engage with solution engineering, partner business and technology teams to define the priorities and opportunities in each app area</li></ul></td>
       </tr>
       <tr>
-        <td class="tg-0lax">Deliver</td>
+        <td class="tg-title">Deliver</td>
         <td class="tg-0lax"><ul><li>Focus on Results and minimize cumbersome process</li></ul></td>
       </tr>
     </tbody>
@@ -157,15 +157,41 @@
     max-width: 100%;
     padding: 0;
   }
-  .c {margin: auto;}
-  .tg  {margin: auto;border-collapse:collapse;border-spacing:0;}
+ 
+  .tg  {
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 5px 5px 10px 0px #ccc;
+    background: rgb(235, 247, 245);
+    background: linear-gradient(
+      180deg,
+      rgba(235, 247, 245, 1) 0%,
+      rgba(250, 251, 253, 1) 100%
+    );
+  }
+  .tg td {
+    padding: 12px;
+  }
+  .tg tbody tr {
+    border-bottom: thin solid #dddddd;
+  }
+  .tg tbody tr:active-row {
+    font-weight: bold;
+  }
+  .tg-title {
+    font-weight: bold;
+  }
+
+  /*
   .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
       overflow:hidden;padding:10px 5px;word-break:normal;}
   .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
       font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
   .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:center}
   .tg .tg-0lax{text-align:left;vertical-align:top}
-
+ */
   a {
     text-decoration: inherit;
     color: inherit;

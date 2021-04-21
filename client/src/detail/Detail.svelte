@@ -13,13 +13,7 @@
   let tag;
   let projects = [];
   let vendors = [];
-  /*
-  onMount(async _ => {
-    let { data } = await httpGet("/" + id);
-    project = data;
-    tag = project.Tags.replace("_", " ");
-  });
-*/
+
   onMount(async (_) => {
     const { data } = await httpGet("/?_sort=id&_order=desc");
     projects = data.projects;
@@ -28,12 +22,6 @@
     for (let i = 0; i < length; i++) {
       if (id == projects[i]["User Story"]) {
         project = projects[i];
-      }
-      if (
-        project.Tags == projects[i].Tags &&
-        projects[i]["Emerging Tech POC Pipeline"] == "Vendors"
-      ) {
-        vendors.push(projects[i]);
       }
     }
     tag = project.Tags.replace("_", " ");
@@ -55,14 +43,6 @@
     <div>
       <Header>Use Case</Header>
       <p>{tag}</p>
-    </div>
-    <div>
-      <Header>Vendors</Header>
-      {#each projects as p}
-        {#if project.Tags == p.Tags && p["Emerging Tech POC Pipeline"] == "Vendors"}
-          <p>{p.Name}</p>
-        {/if}
-      {/each}
     </div>
   </div>
 </main>
