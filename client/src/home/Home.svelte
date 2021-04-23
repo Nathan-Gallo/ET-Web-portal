@@ -1,14 +1,18 @@
 <script>
   import Button from "../common/Button.svelte";
   import ProjectCover from "../common/ProjectCover.svelte";
+  import { RingLoader } from 'svelte-loading-spinners';
   import { onMount } from "svelte";
+
   import { httpGet } from "../common/api.js";
 
-  let projects = [];
-  onMount(async function () {
-    const { data } = await httpGet("/projects");
-    projects = data;
-  });
+  async function getVendors() {
+        const { data } = await httpGet("/projects");
+        return await data
+    }
+
+  let projects = getVendors();
+
 </script>
 
 <main>
@@ -18,16 +22,8 @@
   </header>
   <div class="container">
     <p class="greeting">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
-      euismod velit. Curabitur posuere velit velit, eget fermentum purus
-      scelerisque sit amet. Nunc venenatis leo ligula, eu fermentum turpis
-      dignissim at. Quisque malesuada dictum nisi, sed venenatis enim hendrerit
-      laoreet. Integer metus tortor, pretium auctor auctor in, feugiat nec
-      dolor. Pellentesque pretium libero at magna luctus vulputate. Cras
-      vehicula in tortor eget cursus. Aliquam a suscipit quam, a molestie nulla.
-      Phasellus purus turpis, placerat sed blandit sit amet, fermentum et eros.
-      Ut gravida, erat eget lacinia feugiat, arcu mi maximus dui, nec finibus
-      est orci a neque. Cras volutpat velit a quam mollis malesuada
+      The Emerging Technology team is uniquely positioned to identify, assess and evaluate new and emerging technologies and leveraging them for positive disruption and innovation within the enterprise. Our goal is to be your partner and resource and to engage at every level of the business to drive the delivery and adoption of emerging technologies, aligning The Hartford’s strategic business and technology objectives. These technologies will deliver innovative new solutions in place of current technology that is too expensive, inefficient, or just not practical using traditional means or practices. The team is dedicated to Evangelize new technology and solutions both in the marketplace and within The Hartford and to facilitate brainstorming services to collaborate on innovative, outside the box solutions utilizing new concepts and technologies that will solve previously unsolvable problems. 
+      <br /><br /><span class="greeting">Our ultimate goal is delivering to your team the best in market solutions to the appropriate business and technical opportunities within the enterprise using “Proof of Concepts” to marry these validated solutions with your team’s technical and business challenges. </span>
     </p>
     <img src="./graphic.png" alt="technology graphic" />
   </div>
@@ -38,15 +34,23 @@
   <br /><br />
   <span class="preamble">Current Projects</span>
   <div class="centered">
-    <ul class="icons">
-      {#each projects as project}
-        {#if project.c_EmergingTechPOCPipeline == "Active POC"}
-          <li class="interactive">
-            <ProjectCover interactive {project} />   
-          </li>
-        {/if}
-      {/each}
-    </ul>
+    {#await projects}
+      <div class="flex-container">
+        <div class="inner-element">
+          <RingLoader size="40" color="#1ad79f" unit="px" duration="1s"></RingLoader>
+        </div>
+      </div>
+    {:then projects}
+      <ul class="icons">
+        {#each projects as project}
+          {#if project.c_EmergingTechPOCPipeline == "Active POC"}
+            <li class="interactive">
+              <ProjectCover interactive {project} />   
+            </li>
+          {/if}
+        {/each}
+      </ul>
+    {/await}
   </div>
   <br />
   <hr />
@@ -93,7 +97,19 @@
 
 
 <style>
-
+.flex-container {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
+}
+.inner-element{
+  width: 100px;
+  height: 100px;
+}
 
   main {
     max-width: 1400px;

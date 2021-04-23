@@ -1,41 +1,50 @@
 <script>
     import { onMount } from "svelte";
+    import { RingLoader } from 'svelte-loading-spinners';
 
     import ProjectCover from "../common/ProjectCover.svelte"
     import { httpGet } from "../common/api.js";
 
-    let projects = [];
-    onMount(async function () {
-        const { data } = await httpGet("/?_sort=id&_order=desc");
-        projects = data.projects;
-    });
+
+    async function getUsecases() {
+        const { data } = await httpGet("/usecases");
+        return await data
+    }
+    let projects = getUsecases();
 </script>
 
+{#await projects}
+<div class="loader">
+  <RingLoader size="100" color="#1ad79f" unit="px" duration="1s"></RingLoader>
+</div>
+{:then projects}
 <main>
-    <h2>Use Cases</h2>
-    <ul>
-      {#each projects as project}
-        {#if project["Emerging Tech POC Pipeline"] === "Use Cases"}
-          <li>
-            <ProjectCover interactive {project} />
-            <!--{project.Name} -->
-          </li>
-        {/if}
-      {/each}
-    </ul>
+  <h2>Use Cases</h2>
+  <ul>
+    {#each projects as project}
+      <li>
+        <ProjectCover interactive {project} />
+      </li> 
+    {/each}
+  </ul>
 </main>
-
+{/await}
 <style>
+    .loader {
+    position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  }
 main {
     max-width: 1400px;
     margin: auto;
   }
 
   ul {
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-    grid-auto-rows: 12.8rem;
+    
     gap: var(--spacingMedium);
     list-style: none;
     max-width: 100%;
@@ -43,7 +52,6 @@ main {
   }
   li {
     position: relative;
-    display: flex;
     background: rgb(235, 247, 245);
     background: linear-gradient(
       180deg,

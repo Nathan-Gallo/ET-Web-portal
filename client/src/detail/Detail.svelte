@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { RingLoader } from 'svelte-loading-spinners';
 
   import BackButtonRow from "../common/BackButtonRow.svelte";
   import ProjectCover from "../common/ProjectCover.svelte";
@@ -9,16 +10,14 @@
 
   export let id;
 
-  let project = {};
   let projects = [];
   let tags = [];
   let tag;
   let description;
 
-  onMount(async (_) => {
+  async function getProject() {
     const { data } = await httpGet("/projects/" + id);
     project = data[0];
-    console.log(project)
     
     let tagArray = project.Tags._tagsNameArray
     let length = tagArray.length
@@ -30,13 +29,29 @@
     description = project.Description.replace(/(<([^>]+)>)/gi, "");
     description = description.replace("&amp;", "&");
     tag = tagArray[0].Name.replace("_", " ");
-    console.log(tags);
-  });
-  
-</script>
+    console.log(project.c_EmergingTechPOCPipeline);
 
+    return await project
+  }
+  let project = getProject();
+
+</script>
+{#await project}
+<div class="loader">
+  <RingLoader size="100" color="#1ad79f" unit="px" duration="1s"></RingLoader>
+</div>
+{:then project}
+  
 <main>
-  <BackButtonRow />
+  <nav>
+    {#if project.c_EmergingTechPOCPipeline == "Vendors"}
+      <Button to="/vendors">&lt; Back</Button>
+    {:else if project.c_EmergingTechPOCPipeline == "Use Cases"}
+      <Button to="/useCases">&lt; Back</Button>
+    {:else}
+      <Button to="/projects">&lt; Back</Button>
+    {/if}
+  </nav>
 
   <Header element="h1" size="large">{project.Name}</Header>
 
@@ -47,12 +62,21 @@
     </div>
     <div>
       <Header>Use Case</Header>
-        <p>{tag}</p>
+        {#if tag == undefined}
+          <p>TBD</p>
+        {:else}      
+          <p>{tag}</p>
+        {/if}
     </div>
   </div>
 </main>
-
+{/await}
 <style>
+   .loader {
+    position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  }
   main {
     max-width: 1400px;
     margin: auto;
@@ -62,6 +86,12 @@
     grid-template-columns: repeat(auto-fill, minmax(40vw, 20rem));
     grid-template-rows: minmax(64vw, 32rem) auto;
     gap: 10rem;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    margin-bottom: var(--spacingXLarge);
   }
 
   ul {

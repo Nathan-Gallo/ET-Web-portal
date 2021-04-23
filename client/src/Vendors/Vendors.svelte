@@ -1,17 +1,22 @@
 <script>
     import { onMount } from "svelte";
+    import { RingLoader } from 'svelte-loading-spinners';
 
     import ProjectCover from "../common/ProjectCover.svelte"
     import { httpGet } from "../common/api.js";
 
-    let projects = [];
-    onMount(async function () {
+    async function getVendors() {
         const { data } = await httpGet("/vendors");
-        console.log(data[0])
-        projects = data
-    });
+        return await data
+    }
+    let projects = getVendors();
 </script>
 
+{#await projects}
+<div class="loader">
+  <RingLoader size="100" color="#1ad79f" unit="px" duration="1s"></RingLoader>
+</div>
+{:then projects}
 <main>
     <h2>Vendors</h2>
     <ul>
@@ -22,8 +27,13 @@
       {/each}
     </ul>
 </main>
-
+{/await}
 <style>
+   .loader {
+    position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  }
 main {
     max-width: 1400px;
     margin: auto;

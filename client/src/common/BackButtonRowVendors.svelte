@@ -1,11 +1,9 @@
 <script>
   import Button from "../common/Button.svelte";
-
-  let to;
 </script>
 
 <nav>
-  <Button to="/projects">&lt; Back</Button>
+  <Button to="/vendors">&lt; Back</Button>
 </nav>
 
 <style>
