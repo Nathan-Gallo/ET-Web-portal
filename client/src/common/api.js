@@ -1,4 +1,4 @@
-export const bookApiUrl = 'http://localhost:8081/api'
+export const projectApiUrl = 'http://localhost:8081/api'
 
 
 export function httpGet(path) {
@@ -14,7 +14,7 @@ export function httpPut(path, data) {
 }
 
 async function req(path, method = 'GET', data) {
-  const res = await fetch(bookApiUrl + path, {
+  const res = await fetch(projectApiUrl + path, {
     method,
     headers: {
       'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ async function req(path, method = 'GET', data) {
 
 
 async function doPost(data) {
-  const res = await fetch(bookApiUrl, {
+  const res = await fetch(projectApiUrl, {
     method: 'POST',
     body: JSON.stringify(data)
   })
