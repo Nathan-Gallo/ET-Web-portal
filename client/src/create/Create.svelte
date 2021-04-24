@@ -1,8 +1,6 @@
 <script>
   import { navigate } from "svelte-routing";
-  
-  import BackButtonRowHome from "../common/BackButtonRowHome.svelte";
-  import ProjectCover from "../common/ProjectCover.svelte";
+
   import Button from "../common/Button.svelte";
   import Header from "../common/Header.svelte";
   import { httpPost } from "../common/api.js";
@@ -12,49 +10,53 @@
   let email = "";
   let team = "";
   let description = "";
-  let result = null
+  let result = null;
 
   $: request = { name, email, team, description };
 
   async function handleSubmit(event) {
-
-    const { ok } = await httpPost("/", request);
-    if (ok) {
-      navigate("/");
+    if(name != "" && email != "" && team != "" && description != ""){
+      doPost()
     }
   }
 
-  async function doPost (event) {
-		const res = await fetch('http://localhost:8081/api/projects', {
-      method: 'POST',
+  async function doPost(event) {
+    const res = await fetch("http://localhost:8081/api/projects", {
+      method: "POST",
       headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-			body: JSON.stringify(request)
-		})
-		
-		const json = await res.json()
-    let rawResult = JSON.stringify(json)
-    result = JSON.parse(rawResult)
+      body: JSON.stringify(request),
+    });
 
-    if(result.status == 201){
-      navigate("/")
+    const json = await res.json();
+    let rawResult = JSON.stringify(json);
+    result = JSON.parse(rawResult);
+
+    if (result.status == 201) {
+      console.log(result)
+      navigate("/");
     }
-	}
+  }
 </script>
 
 <main>
-  <BackButtonRowHome />
-
+  <nav>
+    <Button to="/vendors">&lt; Back</Button>
+  </nav>
   <Header element="h1" size="large">Submit an Idea</Header>
 
-  <form on:submit|preventDefault={doPost}>
+  <form on:submit|preventDefault={handleSubmit}>
     <div class="fields">
       <TextInput label="Your Name" bind:value={name} />
       <TextInput label="Your Email" bind:value={email} />
       <TextInput label="Your Team/Group" bind:value={team} />
-      <TextInput label="Business Need / Usecase" bind:value={description} multiline />
+      <TextInput
+        label="Business Need / Usecase"
+        bind:value={description}
+        multiline
+      />
       <div>
         <Button>Submit</Button>
       </div>
@@ -79,11 +81,13 @@
     grid-auto-rows: auto;
     gap: var(--spacingMedium);
   }
-  .preview {
-    display: grid;
-    grid-template-columns: minmax(20vw, 10rem);
-    grid-template-rows: minmax(32vw, 16rem);
+  nav {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    margin-bottom: var(--spacingXLarge);
   }
+
   @media (min-width: 48rem) {
     form {
       grid-template-columns: 60vw 20vw;

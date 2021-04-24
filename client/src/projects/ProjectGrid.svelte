@@ -44,7 +44,6 @@
     max-width: 1400px;
     margin: auto;
   }
-
   ul {
     display: flex;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
@@ -74,11 +73,5 @@
     -ms-transform: scale(0.97);
     transform: scale(0.97);
     transition: 0.4s;
-  }
-
-  .static:hover {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
   }
 </style>

@@ -1,50 +1,48 @@
 <script>
-    import { onMount } from "svelte";
-    import { RingLoader } from 'svelte-loading-spinners';
+  import { RingLoader } from "svelte-loading-spinners";
 
-    import ProjectCover from "../common/ProjectCover.svelte"
-    import { httpGet } from "../common/api.js";
+  import ProjectCover from "../common/ProjectCover.svelte";
+  import { httpGet } from "../common/api.js";
 
-
-    async function getUsecases() {
-        const { data } = await httpGet("/usecases");
-        return await data
-    }
-    let projects = getUsecases();
+  async function getUsecases() {
+    const { data } = await httpGet("/usecases");
+    return await data;
+  }
+  let projects = getUsecases();
 </script>
 
 {#await projects}
-<div class="loader">
-  <RingLoader size="100" color="#1ad79f" unit="px" duration="1s"></RingLoader>
-</div>
+  <div class="loader">
+    <RingLoader size="100" color="#1ad79f" unit="px" duration="1s" />
+  </div>
 {:then projects}
-<main>
-  <h2>Use Cases</h2>
-  <ul>
-    {#each projects as project}
-      <li>
-        <ProjectCover interactive {project} />
-      </li> 
-    {/each}
-  </ul>
-</main>
+  <main>
+    <h2>Use Cases</h2>
+    <ul>
+      {#each projects as project}
+        <li>
+          <ProjectCover interactive {project} />
+        </li>
+      {/each}
+    </ul>
+  </main>
 {/await}
+
 <style>
-    .loader {
-    position: fixed; /* or absolute */
-  top: 50%;
-  left: 50%;
-  }
-main {
+  main {
     max-width: 1400px;
     margin: auto;
   }
-
+  .loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-    
+
     gap: var(--spacingMedium);
     list-style: none;
     max-width: 100%;
@@ -68,11 +66,5 @@ main {
     -ms-transform: scale(0.97);
     transform: scale(0.97);
     transition: 0.4s;
-  }
-
-  .static:hover {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
   }
 </style>

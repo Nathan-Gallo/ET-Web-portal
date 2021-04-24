@@ -1,8 +1,3 @@
-let fs = require('fs');
-const FILE_NAME = './assets/rallyProjects.json';
-const REQUEST_FILE = './assets/requestFile.json';
-
-
 var rally = require('rally'),
     queryUtils = rally.util.query,
     restApi = rally({
@@ -19,42 +14,6 @@ var rally = require('rally'),
         }
     });
 
-async function queryEpicStories(query) {
-    if (query) {
-        return await restApi.query({
-            type: 'hierarchicalrequirement',
-            start: 1,
-            pageSize: 200,
-            limit: 15,
-            order: 'Rank',
-            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
-            scope: {
-                workspace: '', //specify to query entire workspace
-                project: '/project/480104022420', //specify to query a specific project
-                up: false, //true to include parent project results, false otherwise
-                down: true //true to include child project results, false otherwise
-            },
-            query: queryUtils.where('FormattedID', '=', 'US10382')
-        });
-    } else {
-        return await restApi.query({
-            type: 'hierarchicalrequirement',
-            start: 1,
-            pageSize: 200,
-            limit: 15,
-            order: 'Rank',
-            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
-            scope: {
-                workspace: '', //specify to query entire workspace
-                project: '/project/480104022420', //specify to query a specific project
-                up: false, //true to include parent project results, false otherwise
-                down: true //true to include child project results, false otherwise
-            },
-            query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
-        });
-    }
-}
-
 let projectRepo = {
     /* get: function (resolve, reject) {
          fs.readFile(FILE_NAME, function (err, data) {
@@ -66,42 +25,72 @@ let projectRepo = {
              }
          });
      }, */
-    get: function (resolve, reject) {
-        resolve(queryEpicStories());
-    },
-    getByUserStory: function (userStory, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let projects = JSON.parse(data)
-                projects = projects.projects
-                let project = projects.find(r => r["User Story"] == userStory);
-                resolve(project);
-            }
+    get: function () {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
         });
     },
-    getByName: function (name, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let project = JSON.parse(data).filter(r => r.name.toLowerCase() == name.toLowerCase());
-                resolve(project);
-            }
+    getByUserStory: function (userStory) {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('FormattedID', '=', userStory)
         });
     },
-    getByDifficulty: function (difficulty, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let recipes = JSON.parse(data).filter(r => r.difficulty.toLowerCase() == difficulty.toLowerCase());
-                resolve(recipes);
-            }
+    getAllVendors: function () {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '=', "Vendors")
+        });
+    },
+    getAllUsecases: function () {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '=', "Use Cases")
         });
     },
     getByType: function (type, resolve, reject) {

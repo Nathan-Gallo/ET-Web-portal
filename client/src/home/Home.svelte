@@ -1,18 +1,16 @@
 <script>
-  import Button from "../common/Button.svelte";
-  import ProjectCover from "../common/ProjectCover.svelte";
-  import { RingLoader } from 'svelte-loading-spinners';
-  import { onMount } from "svelte";
+  import { RingLoader } from "svelte-loading-spinners";
 
   import { httpGet } from "../common/api.js";
+  import ProjectCover from "../common/ProjectCover.svelte";
+  import Button from "../common/Button.svelte";
 
   async function getVendors() {
-        const { data } = await httpGet("/projects");
-        return await data
-    }
+    const { data } = await httpGet("/projects");
+    return await data;
+  }
 
   let projects = getVendors();
-
 </script>
 
 <main>
@@ -22,8 +20,25 @@
   </header>
   <div class="container">
     <p class="greeting">
-      The Emerging Technology team is uniquely positioned to identify, assess and evaluate new and emerging technologies and leveraging them for positive disruption and innovation within the enterprise. Our goal is to be your partner and resource and to engage at every level of the business to drive the delivery and adoption of emerging technologies, aligning The Hartford’s strategic business and technology objectives. These technologies will deliver innovative new solutions in place of current technology that is too expensive, inefficient, or just not practical using traditional means or practices. The team is dedicated to Evangelize new technology and solutions both in the marketplace and within The Hartford and to facilitate brainstorming services to collaborate on innovative, outside the box solutions utilizing new concepts and technologies that will solve previously unsolvable problems. 
-      <br /><br /><span class="greeting">Our ultimate goal is delivering to your team the best in market solutions to the appropriate business and technical opportunities within the enterprise using “Proof of Concepts” to marry these validated solutions with your team’s technical and business challenges. </span>
+      The Emerging Technology team is uniquely positioned to identify, assess
+      and evaluate new and emerging technologies and leveraging them for
+      positive disruption and innovation within the enterprise. Our goal is to
+      be your partner and resource and to engage at every level of the business
+      to drive the delivery and adoption of emerging technologies, aligning The
+      Hartford’s strategic business and technology objectives. These
+      technologies will deliver innovative new solutions in place of current
+      technology that is too expensive, inefficient, or just not practical using
+      traditional means or practices. The team is dedicated to Evangelize new
+      technology and solutions both in the marketplace and within The Hartford
+      and to facilitate brainstorming services to collaborate on innovative,
+      outside the box solutions utilizing new concepts and technologies that
+      will solve previously unsolvable problems.
+      <br /><br /><span class="greeting"
+        >Our ultimate goal is delivering to your team the best in market
+        solutions to the appropriate business and technical opportunities within
+        the enterprise using “Proof of Concepts” to marry these validated
+        solutions with your team’s technical and business challenges.
+      </span>
     </p>
     <img src="./graphic.png" alt="technology graphic" />
   </div>
@@ -37,7 +52,7 @@
     {#await projects}
       <div class="flex-container">
         <div class="inner-element">
-          <RingLoader size="40" color="#1ad79f" unit="px" duration="1s"></RingLoader>
+          <RingLoader size="40" color="#1ad79f" unit="px" duration="1s" />
         </div>
       </div>
     {:then projects}
@@ -45,7 +60,7 @@
         {#each projects as project}
           {#if project.c_EmergingTechPOCPipeline == "Active POC"}
             <li class="interactive">
-              <ProjectCover interactive {project} />   
+              <ProjectCover interactive {project} />
             </li>
           {/if}
         {/each}
@@ -72,44 +87,68 @@
 
   <span class="preamble">The Four Tenants of Emerging Technology</span>
   <br />
-    <table class="tg">
+  <table class="tg">
     <tbody>
       <tr>
         <td class="tg-title">Evangelize</td>
-        <td class="tg-0pky"><ul><li>Be the Pathfinders for new technology at The Hartford, guiding everyone forward and upward</li></ul></td>
+        <td class="tg-0pky"
+          ><ul>
+            <li>
+              Be the Pathfinders for new technology at The Hartford, guiding
+              everyone forward and upward
+            </li>
+          </ul></td
+        >
       </tr>
       <tr>
         <td class="tg-title">Explore</td>
-        <td class="tg-0pky"><ul><li>Work with every level of the business to understand and identify the core technical &amp; business challenges that can be solved through emerging technology solutions</li></ul></td>
+        <td class="tg-0pky"
+          ><ul>
+            <li>
+              Work with every level of the business to understand and identify
+              the core technical &amp; business challenges that can be solved
+              through emerging technology solutions
+            </li>
+          </ul></td
+        >
       </tr>
       <tr>
         <td class="tg-title">Engage</td>
-        <td class="tg-0pky"><ul><li>Engage with solution engineering, partner business and technology teams to define the priorities and opportunities in each app area</li></ul></td>
+        <td class="tg-0pky"
+          ><ul>
+            <li>
+              Engage with solution engineering, partner business and technology
+              teams to define the priorities and opportunities in each app area
+            </li>
+          </ul></td
+        >
       </tr>
       <tr>
         <td class="tg-title">Deliver</td>
-        <td class="tg-0lax"><ul><li>Focus on Results and minimize cumbersome process</li></ul></td>
+        <td class="tg-0lax"
+          ><ul>
+            <li>Focus on Results and minimize cumbersome process</li>
+          </ul></td
+        >
       </tr>
     </tbody>
-    </table>
-
+  </table>
 </main>
 
-
 <style>
-.flex-container {
-  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-  display: -ms-flexbox;  /* TWEENER - IE 10 */
-  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
-  
-  justify-content: center;
-  align-items: center;
-}
-.inner-element{
-  width: 100px;
-  height: 100px;
-}
+  .flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+  }
+  .inner-element {
+    width: 100px;
+    height: 100px;
+  }
 
   main {
     max-width: 1400px;
@@ -133,10 +172,6 @@
     float: left;
   }
 
-  .goals {
-    display: flex;
-    overflow: hidden;
-  }
   .container {
     display: flex;
   }
@@ -145,13 +180,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 65%;
-  }
-
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
   }
 
   img {
@@ -172,8 +200,8 @@
     max-width: 100%;
     padding: 0;
   }
- 
-  .tg  {
+
+  .tg {
     margin: auto;
     border-collapse: collapse;
     font-size: 0.9em;
@@ -217,30 +245,12 @@
     padding: 1rem;
     box-shadow: 5px 5px 10px 0px #ccc;
   }
-  .inner {
-    margin-left: 10px;
-  }
-  .vl {
-    margin-left: 10px;
-    border-left: 2px solid black;
-  }
 
-  .stacked {
-    display: block;
-  }
   .interactive:hover {
     -webkit-transform: scale(0.97);
     -ms-transform: scale(0.97);
     transform: scale(0.97);
     transition: 0.4s;
-  }
-  .static {
-    margin-top: 15px;
-  }
-  .static:hover {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
   }
 
   @media only screen and (max-width: 767px) {

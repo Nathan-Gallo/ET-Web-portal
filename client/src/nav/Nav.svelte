@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  
 
   // Show mobile icon and display menu
   let showMobileMenu = false;
@@ -34,13 +33,13 @@
 <nav>
   <div class="inner">
     <div
-    on:click={handleMobileIconClick}
-    class={`mobile-icon${showMobileMenu ? " active" : ""}`}
+      on:click={handleMobileIconClick}
+      class={`mobile-icon${showMobileMenu ? " active" : ""}`}
     >
-    <div class="middle-line" />
-  </div>
-  <ul class={`navbar-list${showMobileMenu ? " mobile" : ""}`}>
-    <a href='/'><img src='./logo.png' alt='logo'></a>
+      <div class="middle-line" />
+    </div>
+    <ul class={`navbar-list${showMobileMenu ? " mobile" : ""}`}>
+      <a href="/"><img src="./logo.png" alt="logo" /></a>
       {#each navItems as item}
         <li>
           <a href={item.href} class={item.style}>{item.label}</a>
@@ -58,12 +57,12 @@
   }
 
   img {
-    float:left;
+    float: left;
     margin-top: 5px;
   }
 
   ul {
-    max-width: 1600px; 
+    max-width: 1600px;
     padding-left: 20px;
     padding-right: 20px;
     /*margin: auto; */
