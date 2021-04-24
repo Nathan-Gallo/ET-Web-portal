@@ -71,14 +71,15 @@ router.get('/usecases', async function (req, res, next) {
     });
 });
 
+/*
 // Create GET/search?id=n&name=str to search for recipes by "id" and/or "name"
-router.get('/search', function (req, res, next) {
+router.get('/search', async function (req, res, next) {
     let tag = "API_Automation"
 
-    let data = projectRepo.searchByTag(tag)
+    let data = await projectRepo.searchByTag("chatbot")
     console.log(data)
 });
-
+*/
 
 router.post('/projects', function (req, res, next) {
     console.dir("Server.js req.body #" + req);

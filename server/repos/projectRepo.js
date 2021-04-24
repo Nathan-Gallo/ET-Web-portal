@@ -83,18 +83,7 @@ let projectRepo = {
             query: queryUtils.where('EmergingTechPOCPipeline', '=', "Use Cases")
         });
     },
-    getByType: function (type, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let recipes = JSON.parse(data).filter(r => r.type.toLowerCase() == type.toLowerCase());
-                resolve(recipes);
-            }
-        });
-    },
-    searchByTag: function (tag, resolve, reject) {
+    searchByTag: function (tag) {
         return restApi.query({
             type: 'hierarchicalrequirement',
             start: 1,
