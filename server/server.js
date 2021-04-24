@@ -173,7 +173,7 @@ router.get('/projects/:userStory', async function (req, res, next) {
 });
 
 router.get('/vendors', async function (req, res, next) {
-    let data = await queryAllVendors();
+    let data = await projectRepo.getAllVendors();
     console.log(data)
     res.status(200).json({
         "status": 200,
@@ -184,7 +184,7 @@ router.get('/vendors', async function (req, res, next) {
 });
 
 router.get('/usecases', async function (req, res, next) {
-    let data = await queryAllUsecases();
+    let data = await projectRepo.getAllUsecases();
     console.log(data)
     res.status(200).json({
         "status": 200,
