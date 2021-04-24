@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Configure CORS
 app.use(cors());
-
+/*
 var rally = require('rally'),
     queryUtils = rally.util.query,
     restApi = rally({
@@ -30,86 +30,7 @@ var rally = require('rally'),
             //any additional request options (proxy options, timeouts, etc.)     
         }
     });
-
-function queryAllStories() {
-    return restApi.query({
-        type: 'hierarchicalrequirement',
-        start: 1,
-        pageSize: 200,
-        limit: 200,
-        order: 'Rank',
-        fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
-        scope: {
-            workspace: '', //specify to query entire workspace
-            project: '/project/480104022420', //specify to query a specific project
-            up: false, //true to include parent project results, false otherwise
-            down: true //true to include child project results, false otherwise
-        },
-        query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
-    });
-}
-
-function querySingleStory(story) {
-    return restApi.query({
-        type: 'hierarchicalrequirement',
-        start: 1,
-        pageSize: 200,
-        limit: 200,
-        order: 'Rank',
-        fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
-        scope: {
-            workspace: '', //specify to query entire workspace
-            project: '/project/480104022420', //specify to query a specific project
-            up: false, //true to include parent project results, false otherwise
-            down: true //true to include child project results, false otherwise
-        },
-        query: queryUtils.where('FormattedID', '=', story)
-    });
-}
-
-function queryAllVendors() {
-    return restApi.query({
-        type: 'hierarchicalrequirement',
-        start: 1,
-        pageSize: 200,
-        limit: 200,
-        order: 'Rank',
-        fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
-        scope: {
-            workspace: '', //specify to query entire workspace
-            project: '/project/480104022420', //specify to query a specific project
-            up: false, //true to include parent project results, false otherwise
-            down: true //true to include child project results, false otherwise
-        },
-        query: queryUtils.where('EmergingTechPOCPipeline', '=', "Vendors")
-    });
-}
-
-function queryAllUsecases() {
-    return restApi.query({
-        type: 'hierarchicalrequirement',
-        start: 1,
-        pageSize: 200,
-        limit: 200,
-        order: 'Rank',
-        fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
-        scope: {
-            workspace: '', //specify to query entire workspace
-            project: '/project/480104022420', //specify to query a specific project
-            up: false, //true to include parent project results, false otherwise
-            down: true //true to include child project results, false otherwise
-        },
-        query: queryUtils.where('EmergingTechPOCPipeline', '=', "Use Cases")
-    });
-}
-
-function onSuccess(result) {
-    //console.log('Success!', result);
-}
-
-function onError(error) {
-    console.log('Failure!', error.message, error.errors);
-}
+*/
 //old working function
 /*
 router.get('/projects', async function (req, res, next) {
@@ -133,21 +54,6 @@ router.get('/projects', async function (req, res, next) {
     });
 });
 
-/*
-router.get('/projects', function (req, res, next) {
-    projectRepo.get(function (data) {
-        console.log(data)
-        res.status(200).json({
-            "status": 200,
-            "statusText": "OK",
-            "message": "All projects retrieved",
-            "data": data
-        });
-    }, function (err) {
-        next(err);
-    });
-});
-*/
 router.get('/projects/:userStory', async function (req, res, next) {
     let data = await projectRepo.getByUserStory(req.params.userStory);
     if (data.length != 0) {
