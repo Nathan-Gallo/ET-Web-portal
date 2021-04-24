@@ -71,38 +71,14 @@ router.get('/usecases', async function (req, res, next) {
     });
 });
 
-/*
 // Create GET/search?id=n&name=str to search for recipes by "id" and/or "name"
 router.get('/search', function (req, res, next) {
-    let searchObject = {
-        "id": req.query.id,
-        "name": req.query.name
-    };
-    recipeRepo.search(searchObject, function (data) {
-        if (data.length != 0) {
-            res.status(200).json({
-                "status": 200,
-                "statusText": "OK",
-                "message": "All matching recipes retrieved",
-                "data": data
-            });
-        }
-        else {
-            res.status(404).json({
-                "status": 404,
-                "statusText": "Not Found",
-                "message": "The search for ID '" + searchObject.id + "' and / or name '" + searchObject.name + "' could not be found.",
-                "error": {
-                    "code": "NOT_FOUND",
-                    "message": "The search for ID '" + searchObject.id + "' and / or name '" + searchObject.name + "' could not be found."
-                }
-            });
-        }
-    }, function (err) {
-        next(err);
-    });
+    let tag = "API_Automation"
+
+    let data = projectRepo.searchByTag(tag)
+    console.log(data)
 });
-*/
+
 
 router.post('/projects', function (req, res, next) {
     console.dir("Server.js req.body #" + req);

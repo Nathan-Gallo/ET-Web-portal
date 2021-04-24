@@ -15,16 +15,6 @@ var rally = require('rally'),
     });
 
 let projectRepo = {
-    /* get: function (resolve, reject) {
-         fs.readFile(FILE_NAME, function (err, data) {
-             if (err) {
-                 reject(err);
-             }
-             else {
-                 resolve(JSON.parse(data));
-             }
-         });
-     }, */
     get: function () {
         return restApi.query({
             type: 'hierarchicalrequirement',
@@ -104,21 +94,21 @@ let projectRepo = {
             }
         });
     },
-    search: function (searchObject, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let recipes = JSON.parse(data);
-                // Perform search
-                if (searchObject) {
-                    recipes = recipes.filter(
-                        r => (searchObject.id ? r.id == searchObject.id : true) &&
-                            (searchObject.name ? r.name.toLowerCase().indexOf(searchObject.name.toLowerCase()) >= 0 : true));
-                }
-                resolve(recipes);
-            }
+    searchByTag: function (tag, resolve, reject) {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('Tags', '=', tag)
         });
     },
     insert: function (newData, resolve, reject) {
