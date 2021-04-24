@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from "svelte";
     import { RingLoader } from "svelte-loading-spinners";
 
     import ProjectGrid from "./ProjectGrid.svelte";

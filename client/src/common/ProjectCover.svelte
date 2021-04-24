@@ -3,10 +3,6 @@
 
   export let project = {};
   export let interactive = false;
-
-  function isValidUrl(url) {
-    return url && /http.+\.(jpg|png|gif)$/.test(url);
-  }
 </script>
 
 {#if interactive}
@@ -14,9 +10,7 @@
     <span class="title">{project.Name}</span>
   </a>
 {:else}
-  <a href={"/projects/" + project.FormattedID} use:links>
-    <span class="title">{project.Name}</span>
-  </a>
+  <span class="title">{project.Name}</span>
 {/if}
 
 <style>
