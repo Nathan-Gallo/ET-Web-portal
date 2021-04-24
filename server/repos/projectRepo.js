@@ -104,12 +104,7 @@ let projectRepo = {
      }, */
     get: async function (resolve, reject) {
         let data = await queryAllStories();
-        if(err) {
-            reject(err);
-        }
-        else {
-            resolve(data);
-        }
+        return(data);
     },
     getByUserStory: function (userStory, resolve, reject) {
         fs.readFile(FILE_NAME, function (err, data) {
