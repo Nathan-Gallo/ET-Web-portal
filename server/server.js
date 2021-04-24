@@ -14,36 +14,7 @@ app.use(express.json());
 
 // Configure CORS
 app.use(cors());
-/*
-var rally = require('rally'),
-    queryUtils = rally.util.query,
-    restApi = rally({
-        user: 'nathan.gallo@thehartford.com', //required if no api key, defaults to process.env.RALLY_USERNAME
-        pass: '!Pnj901599087', //required if no api key, defaults to process.env.RALLY_PASSWORD
-        server: 'https://rally1.rallydev.com',  //this is the default and may be omitted
-        requestOptions: {
-            headers: {
-                'X-RallyIntegrationName': 'My cool node.js program',  //while optional, it is good practice to
-                'X-RallyIntegrationVendor': 'My company',             //provide this header information
-                'X-RallyIntegrationVersion': '1.0'
-            }
-            //any additional request options (proxy options, timeouts, etc.)     
-        }
-    });
-*/
-//old working function
-/*
-router.get('/projects', async function (req, res, next) {
-    let data = await queryAllStories();
-    //console.log(data.Results)
-    res.status(200).json({
-        "status": 200,
-        "statusText": "OK",
-        "message": "All projects retrieved",
-        "data": data.Results
-    });
-});
-*/
+
 router.get('/projects', async function (req, res, next) {
     let data = await projectRepo.get()
     res.status(200).json({
