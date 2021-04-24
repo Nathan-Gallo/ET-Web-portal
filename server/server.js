@@ -31,7 +31,7 @@ var rally = require('rally'),
         }
     });
 
-async function queryAllStories() {
+function queryAllStories() {
     return restApi.query({
         type: 'hierarchicalrequirement',
         start: 1,
@@ -49,7 +49,7 @@ async function queryAllStories() {
     });
 }
 
-async function querySingleStory(story) {
+function querySingleStory(story) {
     return restApi.query({
         type: 'hierarchicalrequirement',
         start: 1,
@@ -110,10 +110,22 @@ function onSuccess(result) {
 function onError(error) {
     console.log('Failure!', error.message, error.errors);
 }
-
+//old working function
+/*
 router.get('/projects', async function (req, res, next) {
     let data = await queryAllStories();
     //console.log(data.Results)
+    res.status(200).json({
+        "status": 200,
+        "statusText": "OK",
+        "message": "All projects retrieved",
+        "data": data.Results
+    });
+});
+*/
+router.get('/projects', async function (req, res, next) {
+    let data = await projectRepo.get()
+    console.log(data.Results)
     res.status(200).json({
         "status": 200,
         "statusText": "OK",
