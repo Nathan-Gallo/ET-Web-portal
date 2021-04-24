@@ -125,7 +125,6 @@ router.get('/projects', async function (req, res, next) {
 */
 router.get('/projects', async function (req, res, next) {
     let data = await projectRepo.get()
-    console.log(data.Results)
     res.status(200).json({
         "status": 200,
         "statusText": "OK",
@@ -150,8 +149,7 @@ router.get('/projects', function (req, res, next) {
 });
 */
 router.get('/projects/:userStory', async function (req, res, next) {
-    let data = await querySingleStory(req.params.userStory);
-    console.log(data)
+    let data = await projectRepo.getByUserStory(req.params.userStory);
     if (data.length != 0) {
         res.status(200).json({
             "status": 200,

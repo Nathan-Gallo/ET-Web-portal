@@ -102,21 +102,38 @@ let projectRepo = {
              }
          });
      }, */
-    get: async function (resolve, reject) {
-        let data = await queryAllStories();
-        return(data);
+    get: function () {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
+        });
     },
-    getByUserStory: function (userStory, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let projects = JSON.parse(data)
-                projects = projects.projects
-                let project = projects.find(r => r["User Story"] == userStory);
-                resolve(project);
-            }
+    getByUserStory: function (userStory) {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('FormattedID', '=', userStory)
         });
     },
     getByName: function (name, resolve, reject) {
