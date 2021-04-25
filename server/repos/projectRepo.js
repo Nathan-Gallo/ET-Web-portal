@@ -101,39 +101,13 @@ let projectRepo = {
         });
     },
     insert: function (newData, resolve, reject) {
-        fs.readFile(REQUEST_FILE, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let requests = JSON.parse(data);
-                console.dir(requests)
-                //if (projects.find(u => u.name.toLowerCase() == newData.name.toLowerCase())) {
-                //     reject(err);
-                //  }
-                // else {
-                // Make a new object to create the ID
-                let newRequest;
-
-
-                newRequest = {
-                    id: requests.length + 1,
-                    name: newData.name,
-                    email: newData.email,
-                    team: newData.team,
-                    description: newData.description,
-                };
-
-                requests.push(newRequest);
-                fs.writeFile(REQUEST_FILE, JSON.stringify(requests), function (err) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        resolve(newData);
-                    }
-                });
-                // }
+        return restApi.create({
+            type: 'hierarchicalrequirement',
+            data: newData,
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
             }
         });
     },
