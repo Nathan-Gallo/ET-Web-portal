@@ -3,7 +3,7 @@ let express = require('express');
 let app = express();
 let cors = require('cors');
 let ProjectRepo = require('./repos/projectrepo');
-let usecaseRepo = require('./repos/usecaseRepo');
+let UsecaseRepo = require('./repos/usecaseRepo');
 let errorHelper = require('./helpers/errorhelpers');
 
 // Use the express Router object
@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 let projectRepo = new ProjectRepo();
+let usecaseRepo = new UsecaseRepo();
 
 router.get('/projects', async function (req, res, next) {
     let data = await projectRepo.get()

@@ -1,8 +1,8 @@
 let fs = require('fs');
 const FILE_NAME = './assets/requestFile.json';
 
-let usecaseRepo = {
-    insert: function (newData, resolve, reject) {
+class UsecaseRepo {
+    insert(newData, resolve, reject) {
         fs.readFile(FILE_NAME, function (err, data) {
             if (err) {
                 reject(err);
@@ -33,8 +33,7 @@ let usecaseRepo = {
                 });
             }
         });
-    },
-};
+    }
+}
 
-
-module.exports = usecaseRepo;
+module.exports = UsecaseRepo;
