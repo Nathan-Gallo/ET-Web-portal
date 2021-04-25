@@ -15,16 +15,6 @@ var rally = require('rally'),
     });
 
 let projectRepo = {
-    /* get: function (resolve, reject) {
-         fs.readFile(FILE_NAME, function (err, data) {
-             if (err) {
-                 reject(err);
-             }
-             else {
-                 resolve(JSON.parse(data));
-             }
-         });
-     }, */
     get: function () {
         return restApi.query({
             type: 'hierarchicalrequirement',
@@ -93,68 +83,31 @@ let projectRepo = {
             query: queryUtils.where('EmergingTechPOCPipeline', '=', "Use Cases")
         });
     },
-    getByType: function (type, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let recipes = JSON.parse(data).filter(r => r.type.toLowerCase() == type.toLowerCase());
-                resolve(recipes);
-            }
-        });
-    },
-    search: function (searchObject, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let recipes = JSON.parse(data);
-                // Perform search
-                if (searchObject) {
-                    recipes = recipes.filter(
-                        r => (searchObject.id ? r.id == searchObject.id : true) &&
-                            (searchObject.name ? r.name.toLowerCase().indexOf(searchObject.name.toLowerCase()) >= 0 : true));
-                }
-                resolve(recipes);
-            }
+    searchByTag: function (tag) {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('Tags', '=', tag)
         });
     },
     insert: function (newData, resolve, reject) {
-        fs.readFile(REQUEST_FILE, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let requests = JSON.parse(data);
-                console.dir(requests)
-                //if (projects.find(u => u.name.toLowerCase() == newData.name.toLowerCase())) {
-                //     reject(err);
-                //  }
-                // else {
-                // Make a new object to create the ID
-                let newRequest;
-
-
-                newRequest = {
-                    id: requests.length + 1,
-                    name: newData.name,
-                    email: newData.email,
-                    team: newData.team,
-                    description: newData.description,
-                };
-
-                requests.push(newRequest);
-                fs.writeFile(REQUEST_FILE, JSON.stringify(requests), function (err) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        resolve(newData);
-                    }
-                });
-                // }
+        return restApi.create({
+            type: 'hierarchicalrequirement',
+            data: newData,
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
             }
         });
     },
