@@ -14,8 +14,8 @@ var rally = require('rally'),
         }
     });
 
-let projectRepo = {
-    get: function () {
+class ProjectRepo {
+    get() {
         return restApi.query({
             type: 'hierarchicalrequirement',
             start: 1,
@@ -31,8 +31,9 @@ let projectRepo = {
             },
             query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
         });
-    },
-    getByUserStory: function (userStory) {
+    }
+
+    getByUserStory(userStory) {
         return restApi.query({
             type: 'hierarchicalrequirement',
             start: 1,
@@ -48,8 +49,9 @@ let projectRepo = {
             },
             query: queryUtils.where('FormattedID', '=', userStory)
         });
-    },
-    getAllVendors: function () {
+    }
+
+    getVendors() {
         return restApi.query({
             type: 'hierarchicalrequirement',
             start: 1,
@@ -65,8 +67,9 @@ let projectRepo = {
             },
             query: queryUtils.where('EmergingTechPOCPipeline', '=', "Vendors")
         });
-    },
-    getAllUsecases: function () {
+    }
+
+    getUsecases() {
         return restApi.query({
             type: 'hierarchicalrequirement',
             start: 1,
@@ -82,8 +85,9 @@ let projectRepo = {
             },
             query: queryUtils.where('EmergingTechPOCPipeline', '=', "Use Cases")
         });
-    },
-    searchByTag: function (tag) {
+    }
+
+    searchByTag(tag) {
         return restApi.query({
             type: 'hierarchicalrequirement',
             start: 1,
@@ -98,9 +102,10 @@ let projectRepo = {
                 down: true //true to include child project results, false otherwise
             },
             query: queryUtils.where('Tags', '=', tag)
-        });
-    },
-    insert: function (newData, resolve, reject) {
+        })
+    }
+
+    insert(newData) {
         return restApi.create({
             type: 'hierarchicalrequirement',
             data: newData,
@@ -110,51 +115,7 @@ let projectRepo = {
                 project: '/project/480104022420', //specify to query a specific project
             }
         });
-    },
-    update: function (newData, id, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let recipes = JSON.parse(data);
-                let recipe = recipes.find(r => r.id == id);
-                if (recipe) {
-                    Object.assign(recipe, newData);
-                    fs.writeFile(FILE_NAME, JSON.stringify(recipes), function (err) {
-                        if (err) {
-                            reject(err);
-                        }
-                        else {
-                            resolve(newData);
-                        }
-                    });
-                }
-            }
-        });
-    },
-    delete: function (id, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let recipes = JSON.parse(data);
-                let index = recipes.findIndex(r => r.id == id);
-                if (index != -1) {
-                    recipes.splice(index, 1);
-                    fs.writeFile(FILE_NAME, JSON.stringify(recipes), function (err) {
-                        if (err) {
-                            reject(err);
-                        }
-                        else {
-                            resolve(index);
-                        }
-                    });
-                }
-            }
-        });
     }
-};
+}
 
-module.exports = projectRepo;
+module.exports = ProjectRepo;

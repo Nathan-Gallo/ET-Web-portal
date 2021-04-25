@@ -2,7 +2,7 @@
 let express = require('express');
 let app = express();
 let cors = require('cors');
-let projectRepo = require('./repos/projectrepo');
+let ProjectRepo = require('./repos/projectrepo');
 let usecaseRepo = require('./repos/usecaseRepo');
 let errorHelper = require('./helpers/errorhelpers');
 
@@ -14,6 +14,8 @@ app.use(express.json());
 
 // Configure CORS
 app.use(cors());
+
+let projectRepo = new ProjectRepo();
 
 router.get('/projects', async function (req, res, next) {
     let data = await projectRepo.get()
@@ -50,8 +52,7 @@ router.get('/projects/:userStory', async function (req, res, next) {
 });
 
 router.get('/vendors', async function (req, res, next) {
-    let data = await projectRepo.getAllVendors();
-    console.log(data)
+    let data = await projectRepo.getVendors();
     res.status(200).json({
         "status": 200,
         "statusText": "OK",
@@ -61,8 +62,7 @@ router.get('/vendors', async function (req, res, next) {
 });
 
 router.get('/usecases', async function (req, res, next) {
-    let data = await projectRepo.getAllUsecases();
-    console.log(data)
+    let data = await projectRepo.getUsecases();
     res.status(200).json({
         "status": 200,
         "statusText": "OK",
