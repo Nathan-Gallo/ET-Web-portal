@@ -81,7 +81,7 @@ router.post('/projects', async function (req, res, next) {
         c_EmergingTechPOCPipeline: "Portal Submissions"
     };
     
-    let data = await usecaseRepo.create(rallyObject)
+    let data = await projectRepo.create(rallyObject)
 
     res.status(201).json({
         "status": 201,

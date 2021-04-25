@@ -105,7 +105,7 @@ class ProjectRepo {
         })
     }
 
-    insert(newData) {
+    create(newData) {
         return restApi.create({
             type: 'hierarchicalrequirement',
             data: newData,
