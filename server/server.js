@@ -82,10 +82,34 @@ router.get('/search', async function (req, res, next) {
 });
 */
 
+/*
 router.post('/projects', function (req, res, next) {
     console.dir("Server.js req.body #" + req);
     console.log(req.body)
     usecaseRepo.insert(req.body, function (data) {
+        res.status(201).json({
+            "status": 201,
+            "statusText": "Created",
+            "message": "New Request Added",
+            "data": data
+        });
+    }, function (err) {
+        next(err);
+    });
+});
+*/
+router.post('/projects', function (req, res, next) {
+    console.dir("Server.js req.body #" + req);
+    console.log(req.body)
+
+    let rallyObject = {
+        Name: req.body.name,
+        Notes: "Email: " + req.body.email + ", Team name: " + req.body.team,
+        Description: req.body.description,
+        EmergingTechPOCPipeline: "Use Cases"
+    };
+
+    usecaseRepo.create(rallyObject, function (data) {
         res.status(201).json({
             "status": 201,
             "statusText": "Created",
