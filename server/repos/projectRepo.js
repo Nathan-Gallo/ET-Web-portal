@@ -14,6 +14,79 @@ var rally = require('rally'),
         }
     });
 
+class ProjectRepo {
+    get() {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '!=', null)
+        });
+    }
+
+    getByUserStory(userStory) {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('FormattedID', '=', userStory)
+        });
+    }
+
+    getVendors() {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '=', "Vendors")
+        });
+    }
+
+    getUsecases() {
+        return restApi.query({
+            type: 'hierarchicalrequirement',
+            start: 1,
+            pageSize: 200,
+            limit: 200,
+            order: 'Rank',
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'EmergingTechPOCPipeline'],
+            scope: {
+                workspace: '', //specify to query entire workspace
+                project: '/project/480104022420', //specify to query a specific project
+                up: false, //true to include parent project results, false otherwise
+                down: true //true to include child project results, false otherwise
+            },
+            query: queryUtils.where('EmergingTechPOCPipeline', '=', "Use Cases")
+        });
+    }
+}
 let projectRepo = {
     get: function () {
         return restApi.query({
@@ -157,4 +230,4 @@ let projectRepo = {
     }
 };
 
-module.exports = projectRepo;
+module.exports = ProjectRepo;
