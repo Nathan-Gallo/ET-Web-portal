@@ -72,53 +72,24 @@ router.get('/usecases', async function (req, res, next) {
     });
 });
 
-/*
-// Create GET/search?id=n&name=str to search for recipes by "id" and/or "name"
-router.get('/search', async function (req, res, next) {
-    let tag = "API_Automation"
-
-    let data = await projectRepo.searchByTag("chatbot")
-    console.log(data)
-});
-*/
-
-/*
-router.post('/projects', function (req, res, next) {
-    console.dir("Server.js req.body #" + req);
-    console.log(req.body)
-    usecaseRepo.insert(req.body, function (data) {
-        res.status(201).json({
-            "status": 201,
-            "statusText": "Created",
-            "message": "New Request Added",
-            "data": data
-        });
-    }, function (err) {
-        next(err);
-    });
-});
-*/
-router.post('/projects', function (req, res, next) {
-    console.dir("Server.js req.body #" + req);
-    console.log(req.body)
-
+router.post('/projects', async function (req, res, next) {
+    var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
     let rallyObject = {
-        Name: req.body.name,
+        Name: req.body.name + " " + utc,
         Notes: "Email: " + req.body.email + ", Team name: " + req.body.team,
         Description: req.body.description,
-        EmergingTechPOCPipeline: "Use Cases"
+        c_EmergingTechPOCPipeline: "Portal Submissions"
     };
+    
+    let data = await usecaseRepo.create(rallyObject)
 
-    usecaseRepo.create(rallyObject, function (data) {
-        res.status(201).json({
-            "status": 201,
-            "statusText": "Created",
-            "message": "New Request Added",
-            "data": data
-        });
-    }, function (err) {
-        next(err);
+    res.status(201).json({
+        "status": 201,
+        "statusText": "Created",
+        "message": "New Request Added",
+        "data": data.Results
     });
+
 });
 
 // Configure router so all routes are prefixed with /api/v1

@@ -2,7 +2,6 @@ let fs = require('fs');
 const FILE_NAME = './assets/requestFile.json';
 
 var rally = require('rally'),
-    queryUtils = rally.util.query,
     restApi = rally({
         user: 'nathan.gallo@thehartford.com', //required if no api key, defaults to process.env.RALLY_USERNAME
         pass: '!Pnj901599087', //required if no api key, defaults to process.env.RALLY_PASSWORD
@@ -19,40 +18,7 @@ var rally = require('rally'),
 
 
 class UsecaseRepo {
-    insert(newData, resolve, reject) {
-        fs.readFile(FILE_NAME, function (err, data) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                let requests = JSON.parse(data);
-                console.dir(requests)
-
-                let newRequest;
-
-
-                newRequest = {
-                    id: requests.length + 1,
-                    name: newData.name,
-                    email: newData.email,
-                    team: newData.team,
-                    description: newData.description,
-                };
-
-                requests.push(newRequest);
-                fs.writeFile(FILE_NAME, JSON.stringify(requests), function (err) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        resolve(newData);
-                    }
-                });
-            }
-        });
-    }
-
-    create() {
+    create(newData) {
         return restApi.create({
             type: 'hierarchicalrequirement',
             data: newData,

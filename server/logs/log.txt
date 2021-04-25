@@ -1,4 +1,4 @@
 ********************************************************************************
-Date/Time: 4/21/2021
-Exception Info: {"status":500,"statusText":"Internal Server Error","message":"The \"chunk\" argument must be one of type string or Buffer. Received type object","error":{"code":"INTERNAL_SERVER_ERROR","message":"The \"chunk\" argument must be one of type string or Buffer. Received type object"},"requestInfo":{"hostname":"localhost","path":"/api/projects/"}}
+Date/Time: 4/25/2021
+Exception Info: {"status":500,"statusText":"Internal Server Error","message":"newData is not defined","error":{"code":"INTERNAL_SERVER_ERROR","message":"newData is not defined"},"requestInfo":{"hostname":"localhost","path":"/api/projects"}}
 ********************************************************************************
