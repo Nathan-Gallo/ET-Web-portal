@@ -6,8 +6,8 @@ var rally = require('rally'),
         server: 'https://rally1.rallydev.com',  //this is the default and may be omitted
         requestOptions: {
             headers: {
-                'X-RallyIntegrationName': 'My cool node.js program',  //while optional, it is good practice to
-                'X-RallyIntegrationVendor': 'My company',             //provide this header information
+                'X-RallyIntegrationName': 'Emerging Technology Portal',  //while optional, it is good practice to
+                'X-RallyIntegrationVendor': 'The Hartford',             //provide this header information
                 'X-RallyIntegrationVersion': '1.0'
             }
             //any additional request options (proxy options, timeouts, etc.)     
