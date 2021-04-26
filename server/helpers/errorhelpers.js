@@ -1,13 +1,15 @@
-let logRepo = require('../repos/logrepo');
+let LogRepo = require('../repos/logrepo');
+let logRepo = new LogRepo();
 
-let errorHelpers = {
-    logErrorsToConsole: function (err, req, res, next) {
+class ErrorHelpers {
+    logErrorsToConsole(err, req, res, next) {
         console.error("Log Entry: " + JSON.stringify(errorHelpers.errorBuilder(err)));
         console.error("*".repeat(80));
         next(err);
-    },
-    logErrorsToFile: function (err, req, res, next) {
-        let errorObject = errorHelpers.errorBuilder(err);
+    }
+
+    logErrorsToFile(err, req, res, next) {
+        let errorObject = this.errorBuilder(err);
         errorObject.requestInfo = {
             "hostname": req.hostname,
             "path": req.path,
@@ -19,8 +21,9 @@ let errorHelpers = {
             console.error(err);
         });
         next(err);
-    },
-    clientErrorHandler: function (err, req, res, next) {
+    }
+
+    clientErrorHandler(err, req, res, next) {
         if (req.xhr) {
             res.status(500).json({
                 "status": 500,
@@ -36,11 +39,13 @@ let errorHelpers = {
         } else {
             next(err);
         }
-    },
-    errorHandler: function (err, req, res, next) {
-        res.status(500).json(errorHelpers.errorBuilder(err));
-    },
-    errorBuilder: function (err) {
+    }
+
+    errorHandler(err, req, res, next) {
+        res.status(500).json(this.errorBuilder(err));
+    }
+
+    errorBuilder(err) {
         return {
             "status": 500,
             "statusText": "Internal Server Error",
@@ -53,6 +58,6 @@ let errorHelpers = {
             }
         };
     }
-};
+}
 
-module.exports = errorHelpers;
+module.exports = ErrorHelpers;

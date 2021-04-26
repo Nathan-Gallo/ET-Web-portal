@@ -3,7 +3,7 @@ let express = require('express');
 let app = express();
 let cors = require('cors');
 let ProjectRepo = require('./repos/projectrepo');
-let errorHelper = require('./helpers/errorhelpers');
+let ErrorHelpers = require('./helpers/errorhelpers');
 
 // Use the express Router object
 let router = express.Router();
@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 let projectRepo = new ProjectRepo();
+let errorHelper = new ErrorHelpers();
 
 router.get('/projects', async function (req, res, next) {
     let data = await projectRepo.get()
