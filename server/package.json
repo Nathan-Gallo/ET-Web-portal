@@ -1,7 +1,7 @@
 {
-  "name": "salumi-di-gallo-capstone",
+  "name": "ET-web-portal",
   "version": "1.0.0",
-  "description": "REST APIs for Salumi Di Gallo",
+  "description": "Emerging Technology Project Portal",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -9,16 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.thehartford.com/NJ86010/Salumi-Di-Gallo-Capstone.git"
+    "url": "https://github.com/Nathan-Gallo/ET-Web-portal.git"
   },
   "author": "Nathan Gallo",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-fileupload": "^1.2.0",
     "nodemon": "^2.0.4",
-    "password-hash": "^1.2.2",
     "rally": "^2.1.3"
   }
 }
