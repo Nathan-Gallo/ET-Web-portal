@@ -10,11 +10,12 @@
   let tags = [];
   let tag;
   let description;
+  let contact;
 
   async function getProject() {
     const { data } = await httpGet("/projects/" + id);
     project = data[0];
-
+    
     let tagArray = project.Tags._tagsNameArray;
     let length = tagArray.length;
 
@@ -25,6 +26,11 @@
     description = project.Description.replace(/(<([^>]+)>)/gi, "");
     description = description.replace("&amp;", "&");
     description = description.replace("&nbsp;"," ");
+
+    contact = project.Notes.replace(/(<([^>]+)>)/gi, "");
+    contact = contact.replace("&amp;", "&");
+    contact = contact.replace("&nbsp;"," ");
+
     tag = tagArray[0].Name.replace("_", " ");
 
     return await project;
@@ -64,6 +70,10 @@
         {/if}
       </div>
     </div>
+    {#if project.c_EmergingTechPOCPipeline == "Vendors"}
+      <div><Header>Contact</Header>
+      <p>{contact}</p></div>
+    {/if}
   </main>
 {/await}
 
