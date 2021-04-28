@@ -74,7 +74,10 @@ router.get('/usecases', async function (req, res, next) {
 
 router.post('/projects', async function (req, res, next) {
     var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-    let rallyObject = new RallyObject(req.body.name + " " + utc,"Email: " + req.body.email + ", Team name: " + req.body.team, req.body.description)
+    let nameDate = req.body.name + " " + utc;
+    let notes = "Email: " + req.body.email + ", Team name: " + req.body.team;
+
+    let rallyObject = new RallyObject(nameDate, notes , req.body.description)
 
     let data = await projectRepo.create(rallyObject)
 
