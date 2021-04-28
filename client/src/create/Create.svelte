@@ -1,10 +1,33 @@
 <script>
   import { navigate } from "svelte-routing";
+  import { getContext } from "svelte";
+  import { fly } from 'svelte/transition';
 
   import Button from "../common/Button.svelte";
   import Header from "../common/Header.svelte";
   import { httpPost } from "../common/api.js";
   import TextInput from "./TextInput.svelte";
+  import Message from "./Message.svelte";
+  import CloseButton from './CloseButton.svelte';
+ 
+  const { open } = getContext('simple-modal');
+
+  const showModal = (result) => {
+		open(
+			Message,
+			{
+				message: "Your request has been submitted as UserStory: " + result
+			},
+		  {
+				closeButton: CloseButton
+			},
+			{
+				onClosed: () => {
+          navigate("/")
+				}
+			}
+		);
+	};
 
   let name = "";
   let email = "";
@@ -18,8 +41,9 @@
     if(name != "" && email != "" && team != "" && description != ""){
       let result = await httpPost("/requests", request)
       console.log(result.data.Object.FormattedID)
+      let story = result.data.Object.FormattedID
       if (result.status == 201) {
-        navigate("/");
+        showModal(story)
     }
     }
   }

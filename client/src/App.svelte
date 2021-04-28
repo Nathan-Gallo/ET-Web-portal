@@ -1,5 +1,6 @@
 <script>
   import { Route, Router } from "svelte-routing";
+  import Modal from 'svelte-simple-modal';
 
   import Create from "./create/Create.svelte";
   import Detail from "./detail/Detail.svelte";
@@ -16,7 +17,9 @@
   <Nav />
   <main>
     <Route path="/create">
-      <Create />
+      <Modal>
+        <Create />
+      </Modal>  
     </Route>
     <Route path="/projects/:id" let:params>
       <Detail id={params.id} />
