@@ -36,6 +36,7 @@
     console.log(project)
     website = project.c_Comment
     website = website.replace(/(<([^>]+)>)/gi, "")
+    console.log(project)
     return await project;
   }
   let project = getProject();
@@ -74,11 +75,15 @@
       </div>
     </div>
     {#if project.c_EmergingTechPOCPipeline == "Vendors"}
+      {#if project.Notes != ""}
       <div><Header>Contact</Header>
       <p class="tile">{contact}</p></div>
+      {/if}
+      {#if project.c_Comment != null}
       <div><Header>Vendor Website</Header>
         <p class="tile interactive"><a href={website} target="_blank">{project.Name}</a></p>
       </div>
+      {/if}
     {/if}
   </main>
 {/await}
