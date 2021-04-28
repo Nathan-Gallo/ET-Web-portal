@@ -16,34 +16,18 @@
 
   async function handleSubmit(event) {
     if(name != "" && email != "" && team != "" && description != ""){
-      doPost()
+      let result = await httpPost("/requests", request)
+      console.log(result.data.Object.FormattedID)
+      if (result.status == 201) {
+        navigate("/");
     }
-  }
-
-  async function doPost(event) {
-    const res = await fetch("http://localhost:8081/api/projects", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(request),
-    });
-
-    const json = await res.json();
-    let rawResult = JSON.stringify(json);
-    result = JSON.parse(rawResult);
-
-    if (result.status == 201) {
-      console.log(result)
-      navigate("/");
     }
   }
 </script>
 
 <main>
   <nav>
-    <Button to="/vendors">&lt; Back</Button>
+    <Button to="/">&lt; Back</Button>
   </nav>
   <Header element="h1" size="large">Submit an Idea</Header>
 

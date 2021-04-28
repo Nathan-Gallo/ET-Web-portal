@@ -2,11 +2,11 @@ export const projectApiUrl = 'http://localhost:8081/api'
 
 
 export function httpGet(path) {
-  return req(path)
+  return req(path);
 }
 
-export function httpPost(path, data) {
-  return doPost(data)
+export async function httpPost(path, data) {
+  return req(path, "POST", data);  
 }
 
 export function httpPut(path, data) {
@@ -17,22 +17,15 @@ async function req(path, method = 'GET', data) {
   const res = await fetch(projectApiUrl + path, {
     method,
     headers: {
-      'Content-Type': 'application/json'
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data)
   })
   const json = await res.json()
-  return { ok: res.ok, data: json.data }
+  let rawResult = JSON.stringify(json);
+  let result = JSON.parse(rawResult);
+
+  return result
 }
 
-
-async function doPost(data) {
-  const res = await fetch(projectApiUrl, {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-
-  const json = await res.json()
-  result = JSON.stringify(json)
-  return result;
-}
