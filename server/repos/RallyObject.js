@@ -1,10 +1,11 @@
 class RallyObject {
-    constructor(name, notes, description, c_EmergingTechPOCPipeline){
+    constructor(name, notes, description){
         this.Name = name;
         this.Notes = notes;
         this.Description = description;
-        this.c_EmergingTechPOCPipeline = c_EmergingTechPOCPipeline;
     }
+    
+    c_EmergingTechPOCPipeline = "Portal Submissions";
 }
 
 module.exports = RallyObject;
