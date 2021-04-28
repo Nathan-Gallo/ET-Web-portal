@@ -24,6 +24,7 @@
     }
     description = project.Description.replace(/(<([^>]+)>)/gi, "");
     description = description.replace("&amp;", "&");
+    description = description.replace("&nbsp;"," ");
     tag = tagArray[0].Name.replace("_", " ");
 
     return await project;
