@@ -11,6 +11,7 @@
   let tag;
   let description;
   let contact;
+  let website;
 
   async function getProject() {
     const { data } = await httpGet("/projects/" + id);
@@ -32,7 +33,9 @@
     contact = contact.replace("&nbsp;"," ");
 
     tag = tagArray[0].Name.replace("_", " ");
-
+    console.log(project)
+    website = project.c_Comment
+    website = website.replace(/(<([^>]+)>)/gi, "")
     return await project;
   }
   let project = getProject();
@@ -59,25 +62,46 @@
     <div class="detail">
       <div class="inner">
         <Header>About</Header>
-        <p>{description}</p>
+        <p class="tile">{description}</p>
       </div>
       <div>
         <Header>Use Case</Header>
         {#if tag == undefined}
           <p>TBD</p>
         {:else}
-          <p>{tag}</p>
+          <p class="tile">{tag}</p>
         {/if}
       </div>
     </div>
     {#if project.c_EmergingTechPOCPipeline == "Vendors"}
       <div><Header>Contact</Header>
-      <p>{contact}</p></div>
+      <p class="tile">{contact}</p></div>
+      <div><Header>Vendor Website</Header>
+        <p class="tile interactive"><a href={website} target="_blank">{project.Name}</a></p>
+      </div>
     {/if}
   </main>
 {/await}
 
 <style>
+  a {
+    text-decoration: inherit;
+    color: inherit;
+  }
+  .tile {
+    position: relative;
+    display: inline-block;
+    background: rgb(235, 247, 245);
+    background: linear-gradient(
+      180deg,
+      rgba(235, 247, 245, 1) 0%,
+      rgba(250, 251, 253, 1) 100%
+    );
+    border-radius: 15px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 1px 1px 2px 0px #ccc;
+  }
   .loader {
     position: fixed; /* or absolute */
     top: 50%;
@@ -98,5 +122,12 @@
     align-items: center;
     text-transform: uppercase;
     margin-bottom: var(--spacingXLarge);
+  }
+
+  .interactive:hover {
+    -webkit-transform: scale(0.97);
+    -ms-transform: scale(0.97);
+    transform: scale(0.97);
+    transition: 0.4s;
   }
 </style>

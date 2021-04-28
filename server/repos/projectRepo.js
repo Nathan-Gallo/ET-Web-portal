@@ -40,7 +40,7 @@ class ProjectRepo {
             pageSize: 200,
             limit: 200,
             order: 'Rank',
-            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'Notes', 'EmergingTechPOCPipeline'],
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', 'Notes', 'Comment', 'EmergingTechPOCPipeline'],
             scope: {
                 workspace: '', //specify to query entire workspace
                 project: '/project/480104022420', //specify to query a specific project
@@ -58,7 +58,7 @@ class ProjectRepo {
             pageSize: 200,
             limit: 200,
             order: 'Rank',
-            fetch: ['FormattedID', 'Name', 'Description', 'Tags', "Notes", 'EmergingTechPOCPipeline'],
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', "Notes", 'Comment', 'EmergingTechPOCPipeline'],
             scope: {
                 workspace: '', //specify to query entire workspace
                 project: '/project/480104022420', //specify to query a specific project

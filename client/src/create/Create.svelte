@@ -40,7 +40,7 @@
   async function handleSubmit(event) {
     if(name != "" && email != "" && team != "" && description != ""){
       let result = await httpPost("/requests", request)
-      console.log(result.data.Object.FormattedID)
+  
       let story = result.data.Object.FormattedID
       if (result.status == 201) {
         showModal(story)
