@@ -9,7 +9,6 @@
     const { data } = await httpGet("/projects");
     return await data;
   }
-
   let projects = getVendors();
 </script>
 
@@ -58,7 +57,7 @@
     {:then projects}
       <ul class="icons">
         {#each projects as project}
-          {#if project.c_EmergingTechPOCPipeline == "Active POC"}
+          {#if project.EmergingTechPOCPipeline == "Active POC"}
             <li class="interactive">
               <ProjectCover interactive {project} />
             </li>
