@@ -76,7 +76,7 @@
       <li class="interactive"><a href="/projects">POCs</a></li>
       <li class="interactive"><a href="/useCases">Use Cases</a></li>
       <li class="interactive"><a href="/vendors">Vendors</a></li>
-      <li class="interactive">White Papers</li>
+      <li class="interactive"><a href="/whitepapers">White Papers</a></li>
     </ul>
   </div>
 

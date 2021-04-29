@@ -20,6 +20,7 @@ const errorHelper: ErrorHelpers = new ErrorHelpers();
 
 router.get('/projects', async (req, res, next) => {
     const data = await projectRepo.get()
+    console.log(data.Results[0])
     let projects: Array<RallyObject> = [];
     let length = data.Results.length
 
