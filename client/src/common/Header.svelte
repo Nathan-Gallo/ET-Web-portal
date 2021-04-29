@@ -18,6 +18,7 @@
   h2 {
     text-transform: uppercase;
     font-weight: var(--typeWeightBold);
+    margin-top: 1rem;
   }
   .medium {
     font-size: var(--typeSizeMedium);

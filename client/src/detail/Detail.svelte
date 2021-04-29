@@ -8,7 +8,7 @@
   export let id;
 
   let tags = [];
-  let tag;
+  //let tag;
   let description;
   let contact;
   let website;
@@ -16,7 +16,7 @@
   async function getProject() {
     const { data } = await httpGet("/projects/" + id);
     project = data[0];
-    
+
     let tagArray = project.Tags._tagsNameArray;
     let length = tagArray.length;
 
@@ -26,17 +26,17 @@
     }
     description = project.Description.replace(/(<([^>]+)>)/gi, "");
     description = description.replace("&amp;", "&");
-    description = description.replace("&nbsp;"," ");
+    description = description.replace("&nbsp;", " ");
 
     contact = project.Notes.replace(/(<([^>]+)>)/gi, "");
     contact = contact.replace("&amp;", "&");
-    contact = contact.replace("&nbsp;"," ");
+    contact = contact.replace("&nbsp;", " ");
 
-    tag = tagArray[0].Name.replace("_", " ");
-    console.log(project)
-    website = project.c_Comment
-    website = website.replace(/(<([^>]+)>)/gi, "")
-    console.log(project)
+    //tag = tagArray[0].Name.replace("_", " ");
+    console.log(project);
+    website = project.c_Comment;
+    website = website.replace(/(<([^>]+)>)/gi, "");
+
     return await project;
   }
   let project = getProject();
@@ -63,26 +63,35 @@
     <div class="detail">
       <div class="inner">
         <Header>About</Header>
-        <p class="tile">{description}</p>
+        {#if project.Description != ""}
+          <p class="tile">{description}</p>
+        {/if}
       </div>
       <div>
         <Header>Use Case</Header>
-        {#if tag == undefined}
-          <p>TBD</p>
-        {:else}
-          <p class="tile">{tag}</p>
-        {/if}
+        {#each tags as tag}
+          {#if tag == undefined}
+            <p>TBD</p>
+          {:else}
+            <ul><li class="tile">{tag}</li></ul>
+          {/if}
+        {/each}
       </div>
     </div>
     {#if project.c_EmergingTechPOCPipeline == "Vendors"}
       {#if project.Notes != ""}
-      <div><Header>Contact</Header>
-      <p class="tile">{contact}</p></div>
+        <div>
+          <Header>Contact</Header>
+          <p class="tile">{contact}</p>
+        </div>
       {/if}
       {#if project.c_Comment != null}
-      <div><Header>Vendor Website</Header>
-        <p class="tile interactive"><a href={website} target="_blank">{project.Name}</a></p>
-      </div>
+        <div>
+          <Header>Vendor Website</Header>
+          <p class="tile interactive">
+            <a href={website} target="_blank">{project.Name}</a>
+          </p>
+        </div>
       {/if}
     {/if}
   </main>
@@ -105,6 +114,7 @@
     border-radius: 15px;
     text-align: center;
     padding: 1rem;
+    margin: 0px;
     box-shadow: 1px 1px 2px 0px #ccc;
   }
   .loader {
@@ -112,6 +122,10 @@
     top: 50%;
     left: 50%;
   }
+  ul {
+    padding: 0px;
+  }
+
   main {
     max-width: 1400px;
     margin: auto;
