@@ -1,7 +1,6 @@
 <script>
   import { navigate } from "svelte-routing";
   import { getContext } from "svelte";
-  import { fly } from 'svelte/transition';
 
   import Button from "../common/Button.svelte";
   import Header from "../common/Header.svelte";

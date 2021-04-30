@@ -15,28 +15,33 @@
 
   async function getProject() {
     const { data } = await httpGet("/projects/" + id);
-    project = data[0];
+    project = data;
 
-    let tagArray = project.Tags._tagsNameArray;
+    let tagArray = project.Tags;
     let length = tagArray.length;
 
     for (let i = 0; i < length; i++) {
       let cleanedName = tagArray[i].Name.replace("_", " ");
       tags.push(cleanedName);
     }
-    description = project.Description.replace(/(<([^>]+)>)/gi, "");
-    description = description.replace("&amp;", "&");
-    description = description.replace("&nbsp;", " ");
 
-    contact = project.Notes.replace(/(<([^>]+)>)/gi, "");
-    contact = contact.replace("&amp;", "&");
-    contact = contact.replace("&nbsp;", " ");
+    if (project.Description) {
+      description = project.Description.replace(/(<([^>]+)>)/gi, "");
+      description = description.replace("&amp;", "&");
+      description = description.replace("&nbsp;", " ");
+    }
 
+    if (project.Notes) {
+      contact = project.Notes.replace(/(<([^>]+)>)/gi, "");
+      contact = contact.replace("&amp;", "&");
+      contact = contact.replace("&nbsp;", " ");
+    }
     //tag = tagArray[0].Name.replace("_", " ");
-    console.log(project);
-    website = project.c_Comment;
-    website = website.replace(/(<([^>]+)>)/gi, "");
 
+    if (project.Comment) {
+      website = project.Comment;
+      website = website.replace(/(<([^>]+)>)/gi, "");
+    }
     return await project;
   }
   let project = getProject();
@@ -49,9 +54,9 @@
 {:then project}
   <main>
     <nav>
-      {#if project.c_EmergingTechPOCPipeline == "Vendors"}
+      {#if project.EmergingTechPOCPipeline == "Vendors"}
         <Button to="/vendors">&lt; Back</Button>
-      {:else if project.c_EmergingTechPOCPipeline == "Use Cases"}
+      {:else if project.EmergingTechPOCPipeline == "Use Cases"}
         <Button to="/useCases">&lt; Back</Button>
       {:else}
         <Button to="/projects">&lt; Back</Button>
@@ -78,14 +83,14 @@
         {/each}
       </div>
     </div>
-    {#if project.c_EmergingTechPOCPipeline == "Vendors"}
+    {#if project.EmergingTechPOCPipeline == "Vendors"}
       {#if project.Notes != ""}
         <div>
           <Header>Contact</Header>
           <p class="tile">{contact}</p>
         </div>
       {/if}
-      {#if project.c_Comment != null}
+      {#if project.Comment != null}
         <div>
           <Header>Vendor Website</Header>
           <p class="tile interactive">
@@ -96,6 +101,7 @@
     {/if}
   </main>
 {/await}
+
 
 <style>
   a {

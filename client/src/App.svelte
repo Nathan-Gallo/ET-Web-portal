@@ -9,6 +9,8 @@
   import Nav from "./nav/nav.svelte";
   import UseCases from "./useCases/UseCases.svelte";
   import Vendors from "./Vendors/Vendors.svelte";
+  import Whitepapers from "./white_papers/Whitepapers.svelte";
+
 
   export let url = "";
 </script>
@@ -35,6 +37,9 @@
     </Route>
     <Route path="/vendors">
       <Vendors />
+    </Route>
+    <Route path="/whitepapers">
+      <Whitepapers />
     </Route>
   </main>
 </Router>

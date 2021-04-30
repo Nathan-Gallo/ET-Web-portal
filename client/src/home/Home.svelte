@@ -9,7 +9,6 @@
     const { data } = await httpGet("/projects");
     return await data;
   }
-
   let projects = getVendors();
 </script>
 
@@ -58,7 +57,7 @@
     {:then projects}
       <ul class="icons">
         {#each projects as project}
-          {#if project.c_EmergingTechPOCPipeline == "Active POC"}
+          {#if project.EmergingTechPOCPipeline == "Active POC"}
             <li class="interactive">
               <ProjectCover interactive {project} />
             </li>
@@ -77,7 +76,7 @@
       <li class="interactive"><a href="/projects">POCs</a></li>
       <li class="interactive"><a href="/useCases">Use Cases</a></li>
       <li class="interactive"><a href="/vendors">Vendors</a></li>
-      <li class="interactive">White Papers</li>
+      <li class="interactive"><a href="/whitepapers">White Papers</a></li>
     </ul>
   </div>
 
