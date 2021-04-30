@@ -1,7 +1,7 @@
 import RallyInterface from './RallyInterface';
 
 export default class RallyObject implements RallyInterface {
-    constructor(name: string, description: string, notes: string, FormattedID?: string, Tags?: Array<any>, Comment?: string, EmergingTechPOCPipeline: string = "Portal Submissions") {
+    constructor(name: string, description: string, notes: string, FormattedID?: string, Tags?: any[], Comment?: string, EmergingTechPOCPipeline: string = "Portal Submissions") {
         this.Name = name;
         this.Description = description;
         this.Notes = notes;

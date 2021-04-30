@@ -17,7 +17,7 @@ const express_1 = __importDefault(require("express"));
 const app = express_1.default();
 const cors_1 = __importDefault(require("cors"));
 const projectrepo_1 = __importDefault(require("./repos/projectrepo"));
-const errorhelpers_js_1 = __importDefault(require("./helpers/errorhelpers.js"));
+const errorhelpers_1 = __importDefault(require("./helpers/errorhelpers"));
 const RallyObject_1 = __importDefault(require("./repos/RallyObject"));
 // Use the express Router object
 const router = express_1.default.Router();
@@ -26,24 +26,32 @@ app.use(express_1.default.json());
 // Configure CORS
 app.use(cors_1.default());
 const projectRepo = new projectrepo_1.default();
-const errorHelper = new errorhelpers_js_1.default();
+const errorHelper = new errorhelpers_1.default();
 router.get('/projects', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.get();
+    console.log(data.Results[0]);
+    const projects = [];
+    const length = data.Results.length;
+    for (let i = 0; i < length; i++) {
+        const project = new RallyObject_1.default(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
+        projects.push(project);
+    }
     res.status(200).json({
         "status": 200,
         "statusText": "OK",
         "message": "All projects retrieved",
-        "data": data.Results
+        "data": projects
     });
 }));
 router.get('/projects/:userStory', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.getByUserStory(req.params.userStory);
+    const project = new RallyObject_1.default(data.Results[0].Name, data.Results[0].Description, data.Results[0].Notes, data.Results[0].FormattedID, data.Results[0].Tags._tagsNameArray, data.Results[0].c_Comment, data.Results[0].c_EmergingTechPOCPipeline);
     if (data.length !== 0) {
         res.status(200).json({
             "status": 200,
             "statusText": "OK",
             "message": "The user story: '" + req.params.userStory + "' retrieved",
-            "data": data.Results
+            "data": project
         });
     }
     else {
@@ -60,28 +68,41 @@ router.get('/projects/:userStory', (req, res, next) => __awaiter(void 0, void 0,
 }));
 router.get('/vendors', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.getVendors();
+    const vendors = [];
+    const length = data.Results.length;
+    for (let i = 0; i < length; i++) {
+        const vendor = new RallyObject_1.default(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
+        vendors.push(vendor);
+    }
     res.status(200).json({
         "status": 200,
         "statusText": "OK",
         "message": "All vendors retrieved",
-        "data": data.Results
+        "data": vendors
     });
 }));
 router.get('/usecases', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.getUsecases();
+    const usecases = [];
+    const length = data.Results.length;
+    for (let i = 0; i < length; i++) {
+        const usecase = new RallyObject_1.default(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
+        usecases.push(usecase);
+    }
     res.status(200).json({
         "status": 200,
         "statusText": "OK",
         "message": "All usecases retrieved",
-        "data": data.Results
+        "data": usecases
     });
 }));
 router.post('/requests', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
     const nameDate = req.body.name + " " + utc;
     const notes = "Email: " + req.body.email + ", Team name: " + req.body.team;
-    const rallyObject = new RallyObject_1.default(nameDate, req.body.description, notes);
-    const data = yield projectRepo.create(rallyObject);
+    const submission = new RallyObject_1.default(nameDate, req.body.description, notes);
+    console.log(submission);
+    const data = yield projectRepo.create(submission);
     res.status(201).json({
         "status": 201,
         "statusText": "Created",

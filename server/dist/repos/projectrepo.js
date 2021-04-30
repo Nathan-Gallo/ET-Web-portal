@@ -21,7 +21,7 @@ class ProjectRepo {
             pageSize: 200,
             limit: 200,
             order: 'Rank',
-            fetch: ['FormattedID', 'Name', 'Description', 'Tags', "Notes", 'Comment', 'EmergingTechPOCPipeline'],
+            fetch: ['FormattedID', 'Name', 'Description', 'Tags', "Notes", 'Comment', 'EmergingTechPOCPipeline', "Attachments"],
             scope: {
                 workspace: '',
                 project: '/project/480104022420',
@@ -102,8 +102,13 @@ class ProjectRepo {
     create(newData) {
         return restApi.create({
             type: 'hierarchicalrequirement',
-            data: newData,
-            fetch: ['FormattedID', 'Name', 'Description', 'Tags', "Notes", 'Comment', 'EmergingTechPOCPipeline'],
+            data: {
+                Name: newData.Name,
+                Description: newData.Description,
+                Notes: newData.Notes,
+                c_EmergingTechPOCPipeline: newData.EmergingTechPOCPipeline
+            },
+            fetch: ['FormattedID', 'Name', 'Description', "Notes", 'EmergingTechPOCPipeline'],
             scope: {
                 workspace: '',
                 project: '/project/480104022420', // specify to query a specific project

@@ -20,13 +20,13 @@ const errorHelper: ErrorHelpers = new ErrorHelpers();
 
 router.get('/projects', async (req, res, next) => {
     const data = await projectRepo.get()
-    console.log(data.Results[0])
-    let projects: Array<RallyObject> = [];
-    let length = data.Results.length
+    let projects: RallyObject[] = [];
+    const length = data.Results.length
 
 
     for (let i = 0; i < length; i++) {
-        let project: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
+        const project: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes,
+            data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
         projects.push(project);
     }
 
@@ -41,7 +41,8 @@ router.get('/projects', async (req, res, next) => {
 router.get('/projects/:userStory', async (req, res, next) => {
     const data = await projectRepo.getByUserStory(req.params.userStory);
 
-    let project: RallyObject = new RallyObject(data.Results[0].Name, data.Results[0].Description, data.Results[0].Notes, data.Results[0].FormattedID, data.Results[0].Tags._tagsNameArray, data.Results[0].c_Comment, data.Results[0].c_EmergingTechPOCPipeline);
+    const project: RallyObject = new RallyObject(data.Results[0].Name, data.Results[0].Description, data.Results[0].Notes,
+        data.Results[0].FormattedID, data.Results[0].Tags._tagsNameArray, data.Results[0].c_Comment, data.Results[0].c_EmergingTechPOCPipeline);
 
     if (data.length !== 0) {
         res.status(200).json({
@@ -67,12 +68,13 @@ router.get('/projects/:userStory', async (req, res, next) => {
 
 router.get('/vendors', async (req, res, next) => {
     const data = await projectRepo.getVendors();
-    let vendors: Array<RallyObject> = [];
-    let length = data.Results.length
+    const vendors: RallyObject[] = [];
+    const length = data.Results.length
 
 
     for (let i = 0; i < length; i++) {
-        let vendor: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
+        const vendor: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, 
+            data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
         vendors.push(vendor);
     }
     res.status(200).json({
@@ -85,11 +87,12 @@ router.get('/vendors', async (req, res, next) => {
 
 router.get('/usecases', async (req, res, next) => {
     const data = await projectRepo.getUsecases();
-    let usecases: Array<RallyObject> = [];
-    let length = data.Results.length
+    const usecases: RallyObject[] = [];
+    const length = data.Results.length
 
     for (let i = 0; i < length; i++) {
-        let usecase: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
+        const usecase: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, 
+            data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
         usecases.push(usecase);
     }
     res.status(200).json({
@@ -106,7 +109,7 @@ router.post('/requests', async (req, res, next) => {
     const notes: string = "Email: " + req.body.email + ", Team name: " + req.body.team;
 
     const submission: RallyObject = new RallyObject(nameDate, req.body.description, notes)
-    console.log(submission);
+
     const data = await projectRepo.create(submission);
 
     res.status(201).json({
