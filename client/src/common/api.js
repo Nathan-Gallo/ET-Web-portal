@@ -6,7 +6,7 @@ export function httpGet(path) {
 }
 
 export async function httpPost(path, data) {
-  return req(path, "POST", data);  
+  return req(path, "POST", data);
 }
 
 export function httpPut(path, data) {

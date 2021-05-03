@@ -5,6 +5,7 @@ import cors from 'cors'
 import ProjectRepo from './repos/projectrepo';
 import ErrorHelpers from './helpers/errorhelpers';
 import RallyObject from './repos/RallyObject';
+import * as fs from 'fs';
 
 // Use the express Router object
 const router = express.Router();
@@ -120,6 +121,44 @@ router.post('/requests', async (req, res, next) => {
     });
 
 });
+
+router.get('/filenames/:id', (req, res) => {
+    const walkPath = 'src/files/poc/' + req.params.id;
+
+    const walk = (dir: any, done: any) => {
+
+        const fileArray: string[] = [];
+        fs.readdir(dir, (error, list) => {
+            if (error) {
+                return done(error);
+            }
+
+            res.send(list);
+        });
+    };
+
+    walk(walkPath, (error: any) => {
+        if (error) {
+            throw error;
+        } else {
+            console.log('-------------------------------------------------------------');
+            console.log('finished.');
+            console.log('-------------------------------------------------------------');
+        }
+    });
+
+})
+
+router.get('/file/', (req, res) => {
+    const id = req.query.id
+    const name = req.query.name
+    const filePath = "/files/poc/" + id + "/" + name;
+
+    fs.readFile(__dirname + filePath, (err, data) => {
+        res.contentType("application/pdf");
+        res.send(data);
+    })
+})
 
 // Configure router so all routes are prefixed with /api/v1
 app.use('/api/', router);

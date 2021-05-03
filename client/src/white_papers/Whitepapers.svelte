@@ -6,7 +6,13 @@
     <Header>White Papers</Header>
 
     <div class="container">
-        <p class="greeting">View our slides on upcoming initiatives</p>
+        <p class="greeting">
+            This our repository of technical white papers created by the team.
+            These were individually created by request of either partner's team
+            or executive interest in a specific emerging technology. The team is
+            happy to create additional white papers on any emerging technology
+            topic and share its learning with you and your team.
+        </p>
     </div>
 
     <div class="centered">
@@ -34,9 +40,6 @@
     }
     .centered {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 65%;
     }
     .icons {
         display: flex;
@@ -80,5 +83,6 @@
 
     .container {
         display: flex;
+        max-width: 700px;
     }
 </style>
