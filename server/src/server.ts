@@ -126,15 +126,18 @@ router.get('/filenames/:id', (req, res) => {
     const walkPath = 'src/files/poc/' + req.params.id;
 
     const walk = (dir: any, done: any) => {
-
-        const fileArray: string[] = [];
-        fs.readdir(dir, (error, list) => {
-            if (error) {
-                return done(error);
-            }
-
-            res.send(list);
-        });
+        try {
+            fs.readdir(dir, (error, list) => {
+                if (error) {
+                    res.send(null);
+                }
+                else {
+                    res.send(list);
+                }
+            });
+        } catch (e) {
+            res.send(null);
+        }
     };
 
     walk(walkPath, (error: any) => {
@@ -153,11 +156,14 @@ router.get('/file/', (req, res) => {
     const id = req.query.id
     const name = req.query.name
     const filePath = "/files/poc/" + id + "/" + name;
-
-    fs.readFile(__dirname + filePath, (err, data) => {
-        res.contentType("application/pdf");
-        res.send(data);
-    })
+    try {
+        fs.readFile(__dirname + filePath, (err, data) => {
+            res.contentType("application/pdf");
+            res.send(data);
+        })
+    } catch (e) {
+        res.send(null);
+    }
 })
 
 // Configure router so all routes are prefixed with /api/v1
