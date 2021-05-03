@@ -15,7 +15,9 @@
 
   async function getProject() {
     const { data } = await httpGet("/projects/" + id);
-    fileNames = await httpGet("/filenames/" + id);
+    try {
+      fileNames = await httpGet("/filenames/" + id);
+    } catch (e) {}
     project = data;
 
     let tagArray = project.Tags;
@@ -45,19 +47,19 @@
     return await project;
   }
   async function getFile(file) {
-  const res = await fetch(
-    "http://localhost:8081/api/file/?id=" + id + "&name=" + file,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/pdf",
-        "Content-Type": "application/pdf",
-      },
-    }
-  )
-    .then((r) => r.blob())
-    .then(showFile);
-}
+    const res = await fetch(
+      "http://localhost:8081/api/file/?id=" + id + "&name=" + file,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/pdf",
+          "Content-Type": "application/pdf",
+        },
+      }
+    )
+      .then((r) => r.blob())
+      .then(showFile);
+  }
 
   function showFile(blob) {
     // It is necessary to create a new blob object with mime-type explicitly set
@@ -140,12 +142,12 @@
         </div>
       {/if}
     {/if}
-    {#if fileNames.length != 0}
+    {#if fileNames != null}
       <div>
         <Header>Additional information</Header>
         {#each fileNames as name}
           <ul class="files interactive" on:click={getFile(name)}>
-            <li >{name}</li>
+            <li>{name}</li>
           </ul>
         {/each}
       </div>
