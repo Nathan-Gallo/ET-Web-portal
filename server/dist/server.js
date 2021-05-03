@@ -29,7 +29,6 @@ const projectRepo = new projectrepo_1.default();
 const errorHelper = new errorhelpers_1.default();
 router.get('/projects', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.get();
-    console.log(data.Results[0]);
     const projects = [];
     const length = data.Results.length;
     for (let i = 0; i < length; i++) {
@@ -101,7 +100,6 @@ router.post('/requests', (req, res, next) => __awaiter(void 0, void 0, void 0, f
     const nameDate = req.body.name + " " + utc;
     const notes = "Email: " + req.body.email + ", Team name: " + req.body.team;
     const submission = new RallyObject_1.default(nameDate, req.body.description, notes);
-    console.log(submission);
     const data = yield projectRepo.create(submission);
     res.status(201).json({
         "status": 201,

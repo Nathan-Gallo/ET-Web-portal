@@ -20,7 +20,7 @@ const errorHelper: ErrorHelpers = new ErrorHelpers();
 
 router.get('/projects', async (req, res, next) => {
     const data = await projectRepo.get()
-    let projects: RallyObject[] = [];
+    const projects: RallyObject[] = [];
     const length = data.Results.length
 
 
@@ -73,7 +73,7 @@ router.get('/vendors', async (req, res, next) => {
 
 
     for (let i = 0; i < length; i++) {
-        const vendor: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, 
+        const vendor: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes,
             data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
         vendors.push(vendor);
     }
@@ -91,7 +91,7 @@ router.get('/usecases', async (req, res, next) => {
     const length = data.Results.length
 
     for (let i = 0; i < length; i++) {
-        const usecase: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes, 
+        const usecase: RallyObject = new RallyObject(data.Results[i].Name, data.Results[i].Description, data.Results[i].Notes,
             data.Results[i].FormattedID, data.Results[i].Tags._tagsNameArray, data.Results[i].c_Comment, data.Results[i].c_EmergingTechPOCPipeline);
         usecases.push(usecase);
     }
