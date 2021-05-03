@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -19,6 +38,7 @@ const cors_1 = __importDefault(require("cors"));
 const projectrepo_1 = __importDefault(require("./repos/projectrepo"));
 const errorhelpers_1 = __importDefault(require("./helpers/errorhelpers"));
 const RallyObject_1 = __importDefault(require("./repos/RallyObject"));
+const fs = __importStar(require("fs"));
 // Use the express Router object
 const router = express_1.default.Router();
 // Configure middleware to support JSON data parsing in request object
@@ -108,6 +128,52 @@ router.post('/requests', (req, res, next) => __awaiter(void 0, void 0, void 0, f
         "data": data
     });
 }));
+router.get('/filenames/:id', (req, res) => {
+    const walkPath = 'src/files/poc/' + req.params.id;
+    const walk = (dir, done) => {
+        const fileArray = [];
+        fs.readdir(dir, (error, list) => {
+            if (error) {
+                return done(error);
+            }
+            res.send(list);
+        });
+    };
+    /*
+        process.argv.forEach(function (val, index, array) {
+            if (val.indexOf('source') !== -1) {
+                walkPath = val.split('=')[1];
+            }
+        });
+    */
+    walk(walkPath, (error) => {
+        if (error) {
+            throw error;
+        }
+        else {
+            console.log('-------------------------------------------------------------');
+            console.log('finished.');
+            console.log('-------------------------------------------------------------');
+        }
+    });
+    /*
+        var filePath = "/files/poc/openlegacypoc/OpenLegacy_APIConnect.pdf";
+
+        fs.readFile(__dirname + filePath, (err, data) => {
+            res.contentType("application/pdf");
+            res.send(data);
+        })
+        */
+});
+router.get('/file/', (req, res) => {
+    const id = req.query.id;
+    const name = req.query.name;
+    const filePath = "/files/poc/" + id + "/" + name;
+    fs.readFile(__dirname + filePath, (err, data) => {
+        res.contentType("application/pdf");
+        res.send(data);
+    });
+});
 // Configure router so all routes are prefixed with /api/v1
 app.use('/api/', router);
 // Configure exception logger to console

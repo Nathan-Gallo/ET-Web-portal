@@ -116,11 +116,12 @@ export default class ProjectRepo {
                 Notes: newData.Notes,
                 c_EmergingTechPOCPipeline: newData.EmergingTechPOCPipeline
             },
-            fetch: ['FormattedID', 'Name', 'Description',"Notes", 'EmergingTechPOCPipeline'],
+            fetch: ['FormattedID', 'Name', 'Description', "Notes", 'EmergingTechPOCPipeline'],
             scope: {
                 workspace: '', // specify to query entire workspace
                 project: '/project/480104022420', // specify to query a specific project
             }
         });
     }
+
 }

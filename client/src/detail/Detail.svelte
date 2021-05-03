@@ -8,13 +8,14 @@
   export let id;
 
   let tags = [];
-  //let tag;
   let description;
   let contact;
   let website;
+  let fileNames;
 
   async function getProject() {
     const { data } = await httpGet("/projects/" + id);
+    fileNames = await httpGet("/filenames/" + id);
     project = data;
 
     let tagArray = project.Tags;
@@ -36,7 +37,6 @@
       contact = contact.replace("&amp;", "&");
       contact = contact.replace("&nbsp;", " ");
     }
-    //tag = tagArray[0].Name.replace("_", " ");
 
     if (project.Comment) {
       website = project.Comment;
@@ -44,6 +44,47 @@
     }
     return await project;
   }
+  async function getFile(file) {
+  const res = await fetch(
+    "http://localhost:8081/api/file/?id=" + id + "&name=" + file,
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/pdf",
+        "Content-Type": "application/pdf",
+      },
+    }
+  )
+    .then((r) => r.blob())
+    .then(showFile);
+}
+
+  function showFile(blob) {
+    // It is necessary to create a new blob object with mime-type explicitly set
+    // otherwise only Chrome works like it should
+    var newBlob = new Blob([blob], { type: "application/pdf" });
+
+    // IE doesn't allow using a blob object directly as link href
+    // instead it is necessary to use msSaveOrOpenBlob
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(newBlob);
+      return;
+    }
+
+    // For other browsers:
+    // Create a link pointing to the ObjectURL containing the blob.
+    const data = window.URL.createObjectURL(newBlob);
+    var link = document.createElement("a");
+    link.href = data;
+    link.target = "_blank";
+    //link.download = "file.pdf";
+    link.click();
+    setTimeout(function () {
+      // For Firefox it is necessary to delay revoking the ObjectURL
+      window.URL.revokeObjectURL(data);
+    }, 100);
+  }
+
   let project = getProject();
 </script>
 
@@ -99,9 +140,18 @@
         </div>
       {/if}
     {/if}
+    {#if fileNames.length != 0}
+      <div>
+        <Header>Additional information</Header>
+        {#each fileNames as name}
+          <ul class="files interactive" on:click={getFile(name)}>
+            <li >{name}</li>
+          </ul>
+        {/each}
+      </div>
+    {/if}
   </main>
 {/await}
-
 
 <style>
   a {
@@ -131,7 +181,21 @@
   ul {
     padding: 0px;
   }
-
+  .files {
+    list-style: none;
+    display: inline-block;
+    background: rgb(235, 247, 245);
+    background: linear-gradient(
+      180deg,
+      rgba(235, 247, 245, 1) 0%,
+      rgba(250, 251, 253, 1) 100%
+    );
+    border-radius: 15px;
+    text-align: center;
+    padding: 1rem;
+    margin: 5px;
+    box-shadow: 5px 5px 10px 0px #ccc;
+  }
   main {
     max-width: 1400px;
     margin: auto;
