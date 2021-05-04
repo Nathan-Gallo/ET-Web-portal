@@ -109,12 +109,12 @@
     <Header element="h1" size="large">{project.Name}</Header>
 
     <div class="detail">
-      <div class="inner">
-        <Header>About</Header>
-        {#if project.Description != ""}
+      {#if project.Description != ""}
+        <div class="inner">
+          <Header>About</Header>
           <p class="tile">{description}</p>
-        {/if}
-      </div>
+        </div>
+      {/if}
       <div>
         <Header>Use Case</Header>
         {#each tags as tag}
@@ -216,9 +216,7 @@
   }
 
   .interactive:hover {
-    -webkit-transform: scale(0.97);
-    -ms-transform: scale(0.97);
-    transform: scale(0.97);
+    background: rgb(235, 247, 245);
     transition: 0.4s;
   }
 </style>

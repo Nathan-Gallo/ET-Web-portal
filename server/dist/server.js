@@ -131,21 +131,20 @@ router.post('/requests', (req, res, next) => __awaiter(void 0, void 0, void 0, f
 router.get('/filenames/:id', (req, res) => {
     const walkPath = 'src/files/poc/' + req.params.id;
     const walk = (dir, done) => {
-        const fileArray = [];
-        fs.readdir(dir, (error, list) => {
-            if (error) {
-                return done(error);
-            }
-            res.send(list);
-        });
+        try {
+            fs.readdir(dir, (error, list) => {
+                if (error) {
+                    res.send(null);
+                }
+                else {
+                    res.send(list);
+                }
+            });
+        }
+        catch (e) {
+            res.send(null);
+        }
     };
-    /*
-        process.argv.forEach(function (val, index, array) {
-            if (val.indexOf('source') !== -1) {
-                walkPath = val.split('=')[1];
-            }
-        });
-    */
     walk(walkPath, (error) => {
         if (error) {
             throw error;
@@ -156,23 +155,20 @@ router.get('/filenames/:id', (req, res) => {
             console.log('-------------------------------------------------------------');
         }
     });
-    /*
-        var filePath = "/files/poc/openlegacypoc/OpenLegacy_APIConnect.pdf";
-
-        fs.readFile(__dirname + filePath, (err, data) => {
-            res.contentType("application/pdf");
-            res.send(data);
-        })
-        */
 });
 router.get('/file/', (req, res) => {
     const id = req.query.id;
     const name = req.query.name;
     const filePath = "/files/poc/" + id + "/" + name;
-    fs.readFile(__dirname + filePath, (err, data) => {
-        res.contentType("application/pdf");
-        res.send(data);
-    });
+    try {
+        fs.readFile(__dirname + filePath, (err, data) => {
+            res.contentType("application/pdf");
+            res.send(data);
+        });
+    }
+    catch (e) {
+        res.send(null);
+    }
 });
 // Configure router so all routes are prefixed with /api/v1
 app.use('/api/', router);

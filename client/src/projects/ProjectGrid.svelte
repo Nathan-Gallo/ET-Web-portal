@@ -69,9 +69,7 @@
     box-shadow: 5px 5px 10px 0px #ccc;
   }
   li:hover {
-    -webkit-transform: scale(0.97);
-    -ms-transform: scale(0.97);
-    transform: scale(0.97);
+    background: rgb(235, 247, 245);
     transition: 0.4s;
   }
 </style>

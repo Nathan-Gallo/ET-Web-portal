@@ -3,9 +3,7 @@ import RallyObject from './RallyObject';
 const rally = require('rally'),
     queryUtils = rally.util.query,
     restApi = rally({
-        user: 'nathan.gallo@thehartford.com', // required if no api key, defaults to process.env.RALLY_USERNAME
-        pass: '!Pnj901599087', // required if no api key, defaults to process.env.RALLY_PASSWORD
-        server: 'https://rally1.rallydev.com',  // this is the default and may be omitted
+        apiKey: '_gUdkEZxSYqdMCqqIAWigPpUw5eDzkakpdklNeVIHI',
         requestOptions: {
             headers: {
                 'X-RallyIntegrationName': 'Emerging Technology Portal',  // while optional, it is good practice to
