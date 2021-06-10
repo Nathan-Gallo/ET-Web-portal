@@ -1,9 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const rally = require('rally'), queryUtils = rally.util.query, restApi = rally({
-    user: 'nathan.gallo@thehartford.com',
-    pass: '!Pnj901599087',
-    server: 'https://rally1.rallydev.com',
+    apiKey: '_gUdkEZxSYqdMCqqIAWigPpUw5eDzkakpdklNeVIHI',
     requestOptions: {
         headers: {
             'X-RallyIntegrationName': 'Emerging Technology Portal',
@@ -99,6 +97,7 @@ class ProjectRepo {
             query: queryUtils.where('Tags', '=', tag)
         });
     }
+    // Sends data to Rally and creates a new userstory
     create(newData) {
         return restApi.create({
             type: 'hierarchicalrequirement',

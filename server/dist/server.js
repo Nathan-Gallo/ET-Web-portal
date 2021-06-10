@@ -47,7 +47,7 @@ app.use(express_1.default.json());
 app.use(cors_1.default());
 const projectRepo = new projectrepo_1.default();
 const errorHelper = new errorhelpers_1.default();
-router.get('/projects', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/projects', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.get();
     const projects = [];
     const length = data.Results.length;
@@ -62,7 +62,7 @@ router.get('/projects', (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         "data": projects
     });
 }));
-router.get('/projects/:userStory', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/projects/:userStory', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.getByUserStory(req.params.userStory);
     const project = new RallyObject_1.default(data.Results[0].Name, data.Results[0].Description, data.Results[0].Notes, data.Results[0].FormattedID, data.Results[0].Tags._tagsNameArray, data.Results[0].c_Comment, data.Results[0].c_EmergingTechPOCPipeline);
     if (data.length !== 0) {
@@ -85,7 +85,7 @@ router.get('/projects/:userStory', (req, res, next) => __awaiter(void 0, void 0,
         });
     }
 }));
-router.get('/vendors', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/vendors', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.getVendors();
     const vendors = [];
     const length = data.Results.length;
@@ -100,7 +100,7 @@ router.get('/vendors', (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         "data": vendors
     });
 }));
-router.get('/usecases', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/usecases', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = yield projectRepo.getUsecases();
     const usecases = [];
     const length = data.Results.length;
@@ -115,7 +115,7 @@ router.get('/usecases', (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         "data": usecases
     });
 }));
-router.post('/requests', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/requests', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
     const nameDate = req.body.name + " " + utc;
     const notes = "Email: " + req.body.email + ", Team name: " + req.body.team;

@@ -1,3 +1,4 @@
+<!-- Javascript, HTML, and CSS are all written in the same file and are all scoped for this single component -->
 <script>
     import { RingLoader } from "svelte-loading-spinners";
 
@@ -6,7 +7,7 @@
 
     async function getProjects() {
         const { data } = await httpGet("/projects");
-        return await data;
+        return data;
     }
     let projects = getProjects();
 </script>
@@ -15,10 +16,11 @@
     <main>
         <RingLoader size="100" color="#1ad79f" unit="px" duration="1s" />
     </main>
-{:then projects}
+{:then}
     <ProjectGrid {projects} />
 {/await}
 
+<!-- CSS is scoped for this component only -->
 <style>
     main {
         position: fixed; 

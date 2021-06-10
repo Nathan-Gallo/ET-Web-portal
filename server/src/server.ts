@@ -19,7 +19,7 @@ app.use(cors());
 const projectRepo: ProjectRepo = new ProjectRepo();
 const errorHelper: ErrorHelpers = new ErrorHelpers();
 
-router.get('/projects', async (req, res, next) => {
+router.get('/projects', async (req, res) => {
     const data = await projectRepo.get()
     const projects: RallyObject[] = [];
     const length = data.Results.length
@@ -39,7 +39,7 @@ router.get('/projects', async (req, res, next) => {
     });
 });
 
-router.get('/projects/:userStory', async (req, res, next) => {
+router.get('/projects/:userStory', async (req, res) => {
     const data = await projectRepo.getByUserStory(req.params.userStory);
 
     const project: RallyObject = new RallyObject(data.Results[0].Name, data.Results[0].Description, data.Results[0].Notes,
@@ -67,7 +67,7 @@ router.get('/projects/:userStory', async (req, res, next) => {
 
 });
 
-router.get('/vendors', async (req, res, next) => {
+router.get('/vendors', async (req, res) => {
     const data = await projectRepo.getVendors();
     const vendors: RallyObject[] = [];
     const length = data.Results.length
@@ -86,7 +86,7 @@ router.get('/vendors', async (req, res, next) => {
     });
 });
 
-router.get('/usecases', async (req, res, next) => {
+router.get('/usecases', async (req, res) => {
     const data = await projectRepo.getUsecases();
     const usecases: RallyObject[] = [];
     const length = data.Results.length
@@ -104,7 +104,7 @@ router.get('/usecases', async (req, res, next) => {
     });
 });
 
-router.post('/requests', async (req, res, next) => {
+router.post('/requests', async (req, res) => {
     const utc: string = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
     const nameDate: string = req.body.name + " " + utc;
     const notes: string = "Email: " + req.body.email + ", Team name: " + req.body.team;

@@ -11,11 +11,11 @@
  
   const { open } = getContext('simple-modal');
 
-  const showModal = (result) => {
+  const showModal = (story) => {
 		open(
 			Message,
 			{
-				message: "Your request has been submitted as UserStory: " + result
+				message: "Your request has been submitted as UserStory: " + story
 			},
 		  {
 				closeButton: CloseButton
@@ -34,6 +34,7 @@
   let description = "";
   let result = null;
 
+  // $ = Svelte Reactive Declaration - updates variable when any of it's pieces change
   $: request = { name, email, team, description };
 
   async function handleSubmit(event) {
@@ -56,7 +57,7 @@
 
   <form on:submit|preventDefault={handleSubmit}>
     <div class="fields">
-      <TextInput label="Your Name" bind:value={name} />
+      <TextInput label="Your Name" bind:value={name} /> <!-- Bind sets two way binding between the element and the variable -->
       <TextInput label="Your Email" bind:value={email} />
       <TextInput label="Your Team/Group" bind:value={team} />
       <TextInput
