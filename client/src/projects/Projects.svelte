@@ -16,7 +16,7 @@
     <main>
         <RingLoader size="100" color="#1ad79f" unit="px" duration="1s" />
     </main>
-{:then}
+{:then projects}
     <ProjectGrid {projects} />
 {/await}
 
